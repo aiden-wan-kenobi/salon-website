@@ -17,6 +17,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "low-maintenance-hair-color-carmel",
+    title: "Best Low-Maintenance Hair Colors for Busy Schedules: A Carmel Stylist's Guide",
+    description: "Short on time between appointments? Our Carmel stylists share the best low-maintenance hair color options that look fresh for weeks — from root smudges to lived-in balayage.",
+    publishedDate: "2026-04-02",
+    author: "Glow Salon & Spa",
+    category: "Hair Color",
+    tags: ["low maintenance hair color", "balayage", "root smudge", "Carmel IN", "Indianapolis", "hair color for busy moms"],
+    readTime: "5 min read",
+   },
+   {
     slug: "spring-hair-repair-tips-carmel-indiana",
     title: "How to Repair Winter-Damaged Hair: A Spring Recovery Guide from Our Carmel Stylists",
     description: "Dry, brittle, or flat after winter? Our Carmel stylists share the treatments and at-home habits that actually restore your hair heading into spring.",
@@ -24,6 +34,26 @@ export const blogPosts: BlogPost[] = [
     author: "Glow Salon & Spa",
     category: "Hair Care",
     tags: ["hair repair", "spring hair care", "winter hair damage", "hair treatments", "Carmel IN", "Indianapolis"],
+    readTime: "5 min read",
+  },
+  {
+    slug: "best-spa-services-carmel-indiana",
+    title: "What to Expect at a Spa in Carmel, Indiana: Services, Tips & What to Book First",
+    description: "Looking for a spa in Carmel, Indiana? Discover what services are available at Glow Salon & Spa, what to expect on your first visit, and how to choose the right spa for you.",
+    publishedDate: "2026-03-14",
+    author: "Glow Salon & Spa",
+    category: "Spa",
+    tags: ["spa carmel indiana", "best spa in carmel indiana", "day spa carmel", "Carmel IN", "spa near me"],
+    readTime: "5 min read",
+  },
+  {
+    slug: "gel-vs-dip-nails-carmel",
+    title: "Gel vs. Dip Nails: Which Is Right for You? A Carmel Nail Tech Explains",
+    description: "Not sure whether to book a gel or dip manicure? Emily, our nail technician at Glow Salon & Spa in Carmel, Indiana, breaks down the differences so you can choose the right service for your nails.",
+    publishedDate: "2026-03-14",
+    author: "Glow Salon & Spa",
+    category: "Nails",
+    tags: ["nail salon carmel", "gel nails carmel", "dip nails", "manicure carmel indiana", "west clay nails", "nail salon village of west clay"],
     readTime: "5 min read",
   },
   {
@@ -75,25 +105,5 @@ export const blogPosts: BlogPost[] = [
     category: "Hair",
     tags: ["haircut", "face shape", "hair styling", "Carmel IN"],
     readTime: "4 min read",
-  },
-  {
-    slug: "best-spa-services-carmel-indiana",
-    title: "What to Expect at a Spa in Carmel, Indiana: Services, Tips & What to Book First",
-    description: "Looking for a spa in Carmel, Indiana? Discover what services are available at Glow Salon & Spa, what to expect on your first visit, and how to choose the right spa for you.",
-    publishedDate: "2026-03-14",
-    author: "Glow Salon & Spa",
-    category: "Spa",
-    tags: ["spa carmel indiana", "best spa in carmel indiana", "day spa carmel", "Carmel IN", "spa near me"],
-    readTime: "5 min read",
-  },
-  {
-    slug: "gel-vs-dip-nails-carmel",
-    title: "Gel vs. Dip Nails: Which Is Right for You? A Carmel Nail Tech Explains",
-    description: "Not sure whether to book a gel or dip manicure? Emily, our nail technician at Glow Salon & Spa in Carmel, Indiana, breaks down the differences so you can choose the right service for your nails.",
-    publishedDate: "2026-03-14",
-    author: "Glow Salon & Spa",
-    category: "Nails",
-    tags: ["nail salon carmel", "gel nails carmel", "dip nails", "manicure carmel indiana", "west clay nails", "nail salon village of west clay"],
-    readTime: "5 min read",
-  },
+  }
 ];
