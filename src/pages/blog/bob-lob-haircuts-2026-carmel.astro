@@ -1,0 +1,85 @@
+---
+/**
+ * Blog post: The Bob and Lob — Spring 2026's Most-Requested Haircuts
+ * Single Responsibility: Display bob/lob haircut trend content
+ */
+import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
+import { blogPosts } from '../../data/blog';
+
+const post = blogPosts.find(p => p.slug === 'bob-lob-haircuts-2026-carmel')!;
+---
+
+<BlogPostLayout
+    title={post.title}
+    description={post.description}
+    publishedDate={post.publishedDate}
+    author={post.author}
+    category={post.category}
+    tags={post.tags}
+    readTime={post.readTime}
+>
+    <p>If there is one haircut dominating salon chairs this spring, it is the bob. Whether you call it a bob, a lob, or something in between, shorter lengths are the most-requested style our Carmel stylists are seeing right now. The appeal is simple: bobs are versatile, flattering on nearly every face shape, and they look polished with minimal daily effort. Here is what you should know before booking your chop.</p>
+
+    <h2>Why the Bob Is Having a Major Moment in 2026</h2>
+    <p>Short and mid-length cuts cycle in and out of popularity, but this year feels different. The bob is not just trending — it is everywhere. Red carpets, editorial shoots, and social media feeds are all leaning into shorter, cleaner shapes. Part of the reason is a broader shift toward low-maintenance hair. After years of long extensions and complicated styling routines, clients are asking for cuts that look great air-dried and take five minutes to style in the morning.</p>
+
+    <p>The other factor is that today's bobs are not one-size-fits-all. There are enough variations that nearly anyone can find a version that works for their hair texture, face shape, and personal style. That flexibility is what makes this trend feel less like a fad and more like a lasting shift.</p>
+
+    <h2>The Classic Bob: Clean, Sharp, and Timeless</h2>
+    <p>The classic bob sits between the chin and the jawline. It is blunt-cut at the bottom with minimal layering, creating a clean silhouette that frames the face. This version works especially well on straight to slightly wavy hair and is the easiest to maintain since it holds its shape as it grows.</p>
+
+    <p>A classic bob is a strong choice if you want something that transitions easily between casual and professional settings. It looks polished with nothing more than a round brush and a blow dryer, and it pairs beautifully with a middle part, side part, or tucked behind the ears.</p>
+
+    <h2>The Lob: The Gateway to Going Shorter</h2>
+    <p>The lob — short for long bob — lands somewhere between the collarbone and the shoulders. It is the most popular option for clients who want the look and feel of a bob without committing to a full chop. If you have had long hair for years and the idea of cutting above the shoulders feels dramatic, the lob is the perfect middle ground.</p>
+
+    <p>Lobs work on virtually every hair type. Fine hair gets an instant boost in volume and movement because the weight is removed. Thick hair becomes more manageable and easier to style. Curly hair looks incredible at this length because the curls have room to spring up without becoming too short. Our stylists in Carmel recommend the lob more than any other cut for clients who want a noticeable change that still feels safe.</p>
+
+    <h2>The Cloud Bob: Soft, Rounded, and Effortless</h2>
+    <p>One of the biggest variations this spring is the cloud bob. The name comes from the shape: softly rounded at the ends with subtle internal layering that creates volume and movement without sharp lines. Think of it as a bob that looks like you just ran your fingers through it and walked out the door.</p>
+
+    <p>The cloud bob is ideal if you prefer a more relaxed, lived-in look. It is less structured than a classic bob and more forgiving as it grows out, which makes it another great low-maintenance option. Your stylist achieves the shape with point-cutting or slide-cutting techniques that remove weight without creating visible layers.</p>
+
+    <h2>The Choppy Bob: Textured and Modern</h2>
+    <p>For clients who want a bob with edge, the choppy bob adds texture and deliberate unevenness to the ends. The result is a cut that looks a little undone in the best way — effortless and modern. Choppy bobs pair particularly well with styling products like texture spray or sea salt spray that enhance the piece-y, tousled finish.</p>
+
+    <p>This variation suits medium to thick hair best. On very fine hair, the choppy layers can sometimes look too thin at the ends, so your stylist may recommend a slightly different approach to get a similar vibe with more fullness. A consultation is the best way to figure out whether this version is right for your texture.</p>
+
+    <h2>How to Choose the Right Bob for You</h2>
+    <p>With so many variations, the decision comes down to three things: your face shape, your hair texture, and how much time you want to spend styling.</p>
+
+    <ul>
+        <li><strong>Round face:</strong> A lob or a bob with length below the chin elongates the face. Side parts also help create the illusion of length</li>
+        <li><strong>Oval face:</strong> Nearly any bob variation works. This is the most versatile face shape for shorter cuts</li>
+        <li><strong>Square face:</strong> Soft layers or a cloud bob with rounded edges balance angular features. Avoid very blunt, chin-length bobs that emphasize the jawline</li>
+        <li><strong>Heart-shaped face:</strong> A chin-length bob or lob with volume at the ends balances a narrower chin. Side-swept bangs are a great addition</li>
+    </ul>
+
+    <p>For hair texture, the general rule is that finer hair benefits from blunter cuts that maximize the appearance of thickness, while thicker or coarser hair can handle more layering and texturizing. Wavy and curly hair usually needs to be cut slightly longer than straight hair because it springs up as it dries.</p>
+
+    <h2>What to Expect When Going Short for the First Time</h2>
+    <p>If you have had long hair for years, cutting to a bob can feel like a big leap. Here are a few things our clients say they wish they had known beforehand:</p>
+
+    <ol>
+        <li><strong>You will use less product:</strong> Shorter hair needs less shampoo, less conditioner, and less styling product. Your current bottles will last much longer</li>
+        <li><strong>Drying time drops dramatically:</strong> Most bobs air-dry in a fraction of the time that long hair takes. Many of our clients stop blow-drying altogether</li>
+        <li><strong>Regular trims matter more:</strong> A bob holds its shape best with trims every six to eight weeks. The good news is that trims are quick and affordable</li>
+        <li><strong>Styling is simpler than you think:</strong> A flat iron, a round brush, or just some texture spray is all most bobs need. Your stylist will show you exactly how to recreate the look at home</li>
+    </ol>
+
+    <h2>How to Keep Your Bob Looking Fresh</h2>
+    <p>Bobs are low-maintenance compared to many longer styles, but a few habits will keep yours looking salon-fresh between visits:</p>
+
+    <ul>
+        <li><strong>Book regular trims:</strong> Every six to eight weeks keeps the shape clean. Skipping trims is more noticeable on shorter cuts</li>
+        <li><strong>Invest in a good texture spray:</strong> A light texture spray adds body and movement, especially on second-day hair</li>
+        <li><strong>Use a heat protectant:</strong> If you use a flat iron or curling iron, a heat protectant prevents damage that shows up faster on shorter lengths</li>
+        <li><strong>Experiment with parting:</strong> Switching your part from center to side — or vice versa — gives your bob a completely different look without any extra effort</li>
+    </ul>
+
+    <h2>Pair Your Bob with the Right Color</h2>
+    <p>A new cut is the perfect time to refresh your color. Bobs and lobs look especially striking with face-framing highlights, a subtle balayage, or a glossy all-over tone. Shorter lengths mean the color is closer to your face, so the right shade can brighten your complexion and make the whole cut pop. Our colorists at Glow can help you choose a shade that complements both the cut and your skin tone — check out our guide to <a href="/blog/low-maintenance-hair-color-carmel/">low-maintenance hair colors</a> if you want something that grows out beautifully too.</p>
+
+    <h2>Book Your Bob Consultation</h2>
+    <p>Ready to go shorter this spring? The best place to start is a consultation with one of our stylists at Glow Salon &amp; Spa in Carmel. We will look at your face shape, hair texture, and lifestyle and recommend the bob variation that will work best for you. Call us at <a href="tel:+13178463073">(317) 846-3073</a> or <a href="/contact/">contact us online</a> to schedule your appointment. View our full <a href="/services/hair/">haircut services and pricing</a>.</p>
+</BlogPostLayout>
