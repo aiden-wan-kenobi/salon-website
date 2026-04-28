@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "lint": "astro check",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -23,7 +24,9 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "@astrojs/sitemap": "^3.7.0",
-    "@types/node": "^22.19.1"
+    "@types/node": "^22.19.1",
+    "typescript": "^5.9.3"
   }
 }
