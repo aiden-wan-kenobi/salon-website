@@ -10,9 +10,15 @@ interface Props {
 }
 
 const { serviceName, description, price } = Astro.props;
+
+const serviceId = serviceName
+  .toLowerCase()
+  .replace(/&/g, "and")
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-|-$/g, "");
 ---
 
-<div class="service-container">
+<div id={serviceId} class="service-container">
   <h3 class="service-name">{serviceName}</h3>
   {description && <p class={`description ${description.includes('Travel fee') ? 'travel-fee' : ''}`}>{description}</p>}
   <p class="price">

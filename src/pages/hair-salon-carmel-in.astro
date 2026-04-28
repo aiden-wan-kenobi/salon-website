@@ -1,0 +1,578 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/SEO/Breadcrumbs.astro';
+import StructuredData from '../components/SEO/StructuredData.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { BUSINESS_INFO } from '../config/constants';
+import { reviews } from '../data/reviews';
+import { generateServiceSchema, type FAQItem, type Service } from '../utils/structuredData';
+import hairImage from '../assets/services/hair.webp';
+import bridalImage from '../assets/bridal/IMG_3583.webp';
+import { Image } from 'astro:assets';
+
+const title = "Hair Salon in Carmel, Indiana | Glow Salon & Spa";
+const description = "Looking for a hair salon in Carmel, Indiana? Glow Salon & Spa offers haircuts, dimensional color, highlights, bridal hair, nails, and makeup in the Village of West Clay.";
+
+const featuredServices: Service[] = [
+  { serviceName: "Women's Haircuts & Blowouts", price: "Starting at $55" },
+  { serviceName: "Dimensional Color", price: "Starting at $140" },
+  { serviceName: "Full Highlights", price: "Starting at $150" },
+  { serviceName: "Bridal Hair & Makeup", price: "Priced by service" },
+  { serviceName: "Keratin Smoothing Treatments", price: "Starting at $150" },
+  { serviceName: "Manicures & Pedicures", price: "Starting at $30" },
+];
+
+const localFAQs: FAQItem[] = [
+  {
+    question: "Where is Glow Salon & Spa located in Carmel?",
+    answer: "Glow Salon & Spa is located at 1928 Rhettsbury St in the Village of West Clay, Carmel, IN 46032. We serve clients from Carmel, Westfield, Zionsville, Fishers, Noblesville, and northwest Indianapolis.",
+  },
+  {
+    question: "What hair services do you offer?",
+    answer: "We offer women's haircuts, men's haircuts, blowouts, highlights, dimensional color, all-over color, balayage consultations, keratin smoothing treatments, extensions, updos, bridal hair, and wedding styling.",
+  },
+  {
+    question: "Which stylist should I book for color or bridal hair?",
+    answer: "Laura is especially strong with hair color, balayage, updos, and bridal styling. Julia is our lead bridal stylist and is talented with wedding hair, styling, color, and makeup artistry.",
+  },
+  {
+    question: "Do you offer nails and makeup too?",
+    answer: "Yes. Glow Salon & Spa is a full-service salon. Emily is nail-focused and offers manicures, gel manicures, dip manicures, pedicures, and spa pedicures. We also offer brow waxing, lip waxing, and makeup services.",
+  },
+  {
+    question: "How do I book an appointment?",
+    answer: "You can book online through GlossGenius, call Glow Salon & Spa at (317) 846-3073, or visit our contact page. Walk-ins are welcome based on availability, but appointments are recommended.",
+  },
+];
+
+const serviceSchema = generateServiceSchema("Hair Salon in Carmel, Indiana", description, featuredServices);
+const localReviewHighlights = reviews.filter((review) =>
+  ["svetlana-berman", "ingrid-lohneiss", "brenna-oboyle", "jane-bready"].includes(review.id)
+);
+---
+
+<Layout title={title} description={description} canonicalURL={`${BUSINESS_INFO.website}/hair-salon-carmel-in`}>
+  <StructuredData data={serviceSchema} />
+  <Breadcrumbs items={[
+    { name: "Home", url: BUSINESS_INFO.website },
+    { name: "Hair Salon Carmel IN", url: `${BUSINESS_INFO.website}/hair-salon-carmel-in` },
+  ]} />
+  <Header />
+
+  <section class="local-hero">
+    <div class="local-hero-content">
+      <p class="section-eyebrow">Village of West Clay</p>
+      <h1>Hair Salon in Carmel, Indiana</h1>
+      <p class="hero-copy">
+        Glow Salon & Spa is a full-service salon in Carmel's Village of West Clay,
+        offering haircuts, dimensional color, highlights, bridal hair, nails, waxing,
+        and makeup for clients across Carmel and nearby northside communities.
+      </p>
+      <div class="hero-actions" aria-label="Book or explore Glow Salon and Spa">
+        <a href={BUSINESS_INFO.bookingUrl} target="_blank" rel="noopener noreferrer" class="primary-link">Book Online</a>
+        <a href="/services/hair" class="secondary-link">View Hair Services</a>
+      </div>
+    </div>
+    <div class="local-hero-image">
+      <Image
+        src={hairImage}
+        alt="Hair styling and color services at Glow Salon & Spa in Carmel, Indiana"
+        width={720}
+        quality={85}
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section class="local-section local-intro">
+    <div>
+      <p class="section-eyebrow">Local Salon</p>
+      <h2>A Carmel salon for color, cuts, bridal beauty, and nails</h2>
+    </div>
+    <div class="intro-copy">
+      <p>
+        If you are searching for a hair salon near me, a Carmel hair color specialist,
+        or a salon close to the Village of West Clay, Glow Salon & Spa brings hair,
+        nails, makeup, and bridal services together in one relaxed local studio.
+      </p>
+      <p>
+        Our strongest bookings include dimensional color, highlights, haircuts,
+        smoothing treatments, updos, bridal hair, and event styling. Clients visit
+        us from Carmel, Westfield, Zionsville, Fishers, Noblesville, and the greater
+        Indianapolis area.
+      </p>
+    </div>
+  </section>
+
+  <section class="local-section service-cards" aria-labelledby="popular-services-heading">
+    <div class="section-heading">
+      <p class="section-eyebrow">Popular Services</p>
+      <h2 id="popular-services-heading">What Carmel clients book most</h2>
+    </div>
+    <div class="card-grid">
+      <a href="/services/hair#dimensional-color-w-blow-dry" class="service-card">
+        <span>01</span>
+        <h3>Dimensional Color</h3>
+        <p>Custom color, gray coverage, low-maintenance depth, and shine-focused color services.</p>
+      </a>
+      <a href="/services/hair#full-highlight-w-blow-dry" class="service-card">
+        <span>02</span>
+        <h3>Highlights</h3>
+        <p>Full and partial highlights with haircut or blow-dry options for natural brightness.</p>
+      </a>
+      <a href="/services/hair#women-s-long-haircut-and-blow-dry" class="service-card">
+        <span>03</span>
+        <h3>Haircuts & Blowouts</h3>
+        <p>Women's cuts, men's cuts, children's cuts, shampoo styles, and polished blowouts.</p>
+      </a>
+      <a href="/services/bridal" class="service-card">
+        <span>04</span>
+        <h3>Bridal Hair & Makeup</h3>
+        <p>Trials, wedding-day styling, makeup, and on-site bridal services for Indiana weddings.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="local-feature">
+    <div class="feature-image">
+      <Image
+        src={bridalImage}
+        alt="Bridal hair and makeup styling by Glow Salon & Spa"
+        width={640}
+        quality={85}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="feature-copy">
+      <p class="section-eyebrow">Stylist Expertise</p>
+      <h2>Choose the right specialist for your appointment</h2>
+      <ul class="specialist-list">
+        <li><strong>Laura:</strong> color, balayage, updos, and bridal styling.</li>
+        <li><strong>Julia:</strong> lead bridal stylist, wedding hair, styling, color, and makeup.</li>
+        <li><strong>Emily:</strong> manicures, pedicures, gel polish, and dip nails.</li>
+      </ul>
+      <a href="/team" class="text-link">Meet the full team</a>
+    </div>
+  </section>
+
+  <section class="local-section review-proof" aria-labelledby="review-proof-heading">
+    <div class="section-heading">
+      <p class="section-eyebrow">Client Reviews</p>
+      <h2 id="review-proof-heading">Trusted by Carmel salon clients</h2>
+      <p>
+        Glow Salon & Spa has a {BUSINESS_INFO.aggregateRating.ratingValue}-star Google rating across
+        {` ${BUSINESS_INFO.aggregateRating.reviewCount} `}reviews, with recent feedback mentioning
+        Laura's color work, Julia's styling and bridal hair, Emily's nail services, and the salon's
+        friendly full-service experience.
+      </p>
+    </div>
+    <div class="review-proof-grid">
+      {localReviewHighlights.map((review) => (
+        <figure class="review-proof-card">
+          <div class="review-stars">★★★★★</div>
+          <blockquote>{review.text}</blockquote>
+          <figcaption>
+            <strong>{review.name}</strong>
+            <span>{review.services?.slice(0, 2).join(" & ")}{review.stylist ? ` · ${review.stylist}` : ""}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="local-section visit-section" aria-labelledby="visit-heading">
+    <div>
+      <p class="section-eyebrow">Visit Glow</p>
+      <h2 id="visit-heading">Easy to reach from Carmel, Westfield, and Zionsville</h2>
+    </div>
+    <div class="visit-details">
+      <address>
+        {BUSINESS_INFO.address.street}<br />
+        Carmel, IN 46032
+      </address>
+      <p>
+        Tuesday-Friday: 10am-6pm<br />
+        Saturday: 10am-4pm<br />
+        Sunday & Monday: Closed
+      </p>
+      <p>
+        <a href={`tel:+1${BUSINESS_INFO.phone.replace(/-/g, '')}`}>{BUSINESS_INFO.phoneFormatted}</a>
+      </p>
+    </div>
+  </section>
+
+  <FAQSection faqs={localFAQs} />
+
+  <section class="local-cta">
+    <h2>Ready to book your Carmel salon appointment?</h2>
+    <div class="hero-actions">
+      <a href={BUSINESS_INFO.bookingUrl} target="_blank" rel="noopener noreferrer" class="primary-link">Book Online</a>
+      <a href="/contact" class="secondary-link">Contact Glow</a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .local-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
+    min-height: 560px;
+    background: var(--cream);
+  }
+
+  .local-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem max(2rem, calc((100vw - 1180px) / 2)) 5rem 2rem;
+    margin-left: auto;
+    max-width: 720px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin: 0 0 0.75rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--deep);
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 5vw, 4.75rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 0 0 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 1.45rem;
+    font-weight: 300;
+    margin: 0 0 0.75rem;
+  }
+
+  .hero-copy,
+  .intro-copy p,
+  .service-card p,
+  .feature-copy li,
+  .visit-details,
+  .local-cta {
+    font-family: 'Jost', sans-serif;
+    color: var(--warm-gray);
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+    max-width: 620px;
+    margin: 0 0 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .primary-link,
+  .secondary-link {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 1.35rem;
+  }
+
+  .primary-link {
+    background: var(--deep);
+    color: var(--cream);
+    border: 1px solid var(--deep);
+  }
+
+  .secondary-link {
+    color: var(--deep);
+    border: 1px solid var(--rose);
+  }
+
+  .local-hero-image {
+    min-height: 420px;
+    overflow: hidden;
+  }
+
+  .local-hero-image img,
+  .feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(7%);
+  }
+
+  .local-section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .local-intro,
+  .visit-section {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .intro-copy p {
+    margin: 0 0 1rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .section-heading p {
+    font-family: 'Jost', sans-serif;
+    color: var(--warm-gray);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 760px;
+    margin: 1rem 0 0;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .service-card {
+    display: block;
+    min-height: 220px;
+    border: 1px solid var(--blush);
+    padding: 1.5rem;
+    text-decoration: none;
+    background: #fff;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--rose);
+  }
+
+  .service-card span {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    color: var(--rose);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    margin: 0;
+  }
+
+  .local-feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--deep);
+  }
+
+  .feature-image {
+    min-height: 460px;
+    overflow: hidden;
+  }
+
+  .feature-copy {
+    padding: 5rem 4rem;
+    align-self: center;
+  }
+
+  .feature-copy h2,
+  .local-feature h3 {
+    color: var(--cream);
+  }
+
+  .specialist-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .feature-copy li {
+    color: var(--blush);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-copy strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .text-link {
+    font-family: 'Jost', sans-serif;
+    color: var(--cream);
+    text-decoration-color: var(--rose);
+    text-underline-offset: 0.25em;
+  }
+
+  .visit-details address {
+    font-style: normal;
+    margin-bottom: 1rem;
+  }
+
+  .visit-details p {
+    margin: 0 0 1rem;
+  }
+
+  .visit-details a {
+    color: var(--deep);
+  }
+
+  .review-proof {
+    border-bottom: 1px solid var(--blush);
+  }
+
+  .review-proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .review-proof-card {
+    margin: 0;
+    padding: 1.5rem;
+    background: #fff;
+    border-top: 2px solid var(--blush);
+    box-shadow: 0 4px 20px rgba(61, 43, 35, 0.07);
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.9rem;
+  }
+
+  .review-proof-card blockquote {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    color: var(--deep);
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.55;
+    margin: 0 0 1rem;
+  }
+
+  .review-proof-card figcaption strong,
+  .review-proof-card figcaption span {
+    display: block;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .review-proof-card figcaption strong {
+    color: var(--deep);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .review-proof-card figcaption span {
+    color: var(--rose);
+    font-size: 0.72rem;
+    margin-top: 0.25rem;
+  }
+
+  .local-cta {
+    text-align: center;
+    padding: 5rem 2rem 6rem;
+    background: #fff;
+  }
+
+  .local-cta h2 {
+    margin: 0 auto 1.5rem;
+    max-width: 680px;
+  }
+
+  .local-cta .hero-actions {
+    justify-content: center;
+  }
+
+  :global(.faq-section) {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+  }
+
+  @media (max-width: 960px) {
+    .local-hero,
+    .local-feature,
+    .local-intro,
+    .visit-section {
+      grid-template-columns: 1fr;
+    }
+
+    .local-hero-content,
+    .feature-copy {
+      padding: 4rem 2rem;
+      max-width: none;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-proof-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .local-hero-content,
+    .local-section,
+    .feature-copy,
+    .local-cta {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .review-proof-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .primary-link,
+    .secondary-link {
+      text-align: center;
+    }
+  }
+</style>

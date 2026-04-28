@@ -2,8 +2,8 @@
 import ServicePage from '../../components/salon-services/ServicePage.astro';
 import { hairFAQs } from '../../data/faqs';
 
-const title = "Hair Salon in Carmel, Indiana - Cuts, Color & Balayage | Glow Salon & Spa";
-const description = "Professional haircuts, highlights, balayage, keratin treatments, and extensions at Glow Salon & Spa in Carmel, Indiana. Walk-ins welcome. Call (317) 846-3073.";
+const title = "Hair Salon in Carmel, IN | Color, Cuts & Bridal Hair | Glow Salon & Spa";
+const description = "Top-rated hair salon in Carmel, IN for haircuts, dimensional color, highlights, bridal hair, keratin treatments, and extensions in the Village of West Clay.";
 
 const hair_services = [
     { serviceName: "Women's Short Haircut & Blow-dry", price: '$55' },
@@ -39,23 +39,45 @@ const hair_services = [
 <ServicePage
     title={title}
     description={description}
-    pageTitle="Hair Services in Carmel, IN"
-    introText="Looking for a hair salon in Carmel, Indiana? Glow Salon & Spa offers expert haircuts, color, balayage, highlights, extensions, and keratin treatments in the Village of West Clay. Our experienced stylists serve clients from Carmel, Westfield, Fishers, Noblesville, and the greater Indianapolis area."
+    pageTitle="Hair Salon in Carmel, IN"
+    introText="Looking for a hair salon near Carmel, Indiana? Glow Salon & Spa offers expert haircuts, dimensional color, highlights, bridal hair, extensions, and keratin treatments in the Village of West Clay. Our experienced stylists serve clients from Carmel, Westfield, Fishers, Noblesville, Zionsville, and the greater Indianapolis area."
     services={hair_services}
     faqs={hairFAQs}
     galleryHeading="Our Hair Work"
     gallerySubtext="Cuts, colors, and styles by the Glow Salon & Spa team"
     galleryUrl="/services/hair-gallery"
-/>
+>
+    <section slot="introDetails" class="service-detail-grid" aria-labelledby="hair-salon-carmel-heading">
+        <div>
+            <h2 id="hair-salon-carmel-heading">Carmel Haircuts, Color & Styling</h2>
+            <p>
+                Our hair services are built for real salon visits: precision cuts, dimensional color,
+                gray coverage, low-maintenance highlights, smoothing treatments, bridal styles, and
+                blowouts. Whether you are searching for a hair salon near me, a Carmel hair color
+                specialist, or a stylist close to the Village of West Clay, our team can help you choose
+                the right service for your hair, schedule, and maintenance goals.
+            </p>
+        </div>
+        <div>
+            <h2>Popular Hair Services</h2>
+            <ul>
+                <li><a href="#full-highlight-w-blow-dry">Highlights and dimensional color</a></li>
+                <li><a href="/services/bridal">Bridal hair and wedding styling</a></li>
+                <li><a href="#women-s-long-haircut-and-blow-dry">Women's haircuts and blowouts</a></li>
+                <li><a href="#keratin-smoothing-treatment">Keratin smoothing treatments</a></li>
+            </ul>
+        </div>
+    </section>
 
-<section class="blog-links-section">
-    <h2 class="blog-links-heading">From Our Blog</h2>
-    <ul class="blog-links-list">
-        <li><a href="/blog/spring-2026-hair-color-trends-indianapolis/">Spring 2026 Hair Color Trends: What Our Carmel Stylists Are Booking</a></li>
-        <li><a href="/blog/how-to-keep-hair-color-lasting-longer/">How to Make Your Hair Color Last Longer Between Visits</a></li>
-        <li><a href="/blog/how-to-choose-the-right-haircut/">How to Choose the Right Haircut for Your Face Shape</a></li>
-    </ul>
-</section>
+    <section class="blog-links-section">
+        <h2 class="blog-links-heading">From Our Blog</h2>
+        <ul class="blog-links-list">
+            <li><a href="/blog/spring-2026-hair-color-trends-indianapolis/">Spring 2026 Hair Color Trends: What Our Carmel Stylists Are Booking</a></li>
+            <li><a href="/blog/how-to-keep-hair-color-lasting-longer/">How to Make Your Hair Color Last Longer Between Visits</a></li>
+            <li><a href="/blog/how-to-choose-the-right-haircut/">How to Choose the Right Haircut for Your Face Shape</a></li>
+        </ul>
+    </section>
+</ServicePage>
 
 <style>
     .blog-links-section {

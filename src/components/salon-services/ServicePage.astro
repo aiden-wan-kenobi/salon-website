@@ -51,6 +51,8 @@ const serviceStructuredData = generateServiceSchema(pageTitle, description, serv
                 <h1>{pageTitle}</h1>
                 <p class="service-intro">{introText}</p>
 
+                <slot name="introDetails" />
+
                 {galleryUrl && galleryHeading && gallerySubtext && (
                     <GalleryLink
                         heading={galleryHeading}
@@ -72,6 +74,8 @@ const serviceStructuredData = generateServiceSchema(pageTitle, description, serv
                 {faqs && faqs.length > 0 && (
                     <FAQSection faqs={faqs} />
                 )}
+
+                <slot />
             </div>
             
             <div class="button-group-sidebar">

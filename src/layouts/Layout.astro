@@ -12,7 +12,7 @@ import {
 	generateArticleSchema,
 } from '../utils/structuredData';
 import { getCanonicalUrl } from '../utils/seo';
-import { BUSINESS_INFO, SERVICES } from '../config/constants';
+import { BUSINESS_INFO } from '../config/constants';
 import Analytics from '@vercel/analytics/astro';
 
 export interface Props {
@@ -83,8 +83,7 @@ if (articlePublishedTime) {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 		<!-- Preload critical fonts -->
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
 
 		<!-- Preload critical hero image -->
 		{isHomepage && (
@@ -92,14 +91,13 @@ if (articlePublishedTime) {
 		)}
 		
 		<!-- Preload critical CSS -->
-		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 		<!-- ahrefs analytics -->
-		<script type="text/partytown" src="https://analytics.ahrefs.com/analytics.js" data-key="cLD7yENK+8muOupoEIIYwg"></script>
+		<script is:inline type="text/partytown" src="https://analytics.ahrefs.com/analytics.js" data-key="cLD7yENK+8muOupoEIIYwg"></script>
 		<!-- Google Analytics (gtag.js) -->
-		<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-YJS85CR3ET"></script>
-		<script type="text/partytown">
+		<script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-YJS85CR3ET"></script>
+		<script is:inline type="text/partytown">
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
