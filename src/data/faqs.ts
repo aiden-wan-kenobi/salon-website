@@ -23,8 +23,16 @@ export const hairFAQs: FAQItem[] = [
     answer: "We recommend booking an appointment to ensure availability with your preferred stylist. You can book online through our website or call us at (317) 846-3073. Walk-ins are welcome based on availability.",
   },
   {
+    question: "Are you a hair salon near the Village of West Clay?",
+    answer: "Yes. Glow Salon & Spa is located in the Village of West Clay at 1928 Rhettsbury St in Carmel, IN. We are a convenient hair salon for clients near West Clay, Westfield, Zionsville, Fishers, Noblesville, and northwest Indianapolis.",
+  },
+  {
     question: "What hair coloring services do you offer?",
     answer: "We offer a full range of color services including full and partial highlights, dimensional color, all-over color, color glaze, balayage, and new growth touch-ups. Prices start at $70 for a color glaze and vary based on the service and whether it includes a haircut or blow-dry.",
+  },
+  {
+    question: "Can I book a haircut and color appointment together?",
+    answer: "Yes. Many color services can be paired with a haircut or blow-dry, including full highlights, partial highlights, dimensional color, all-over color, and new growth touch-ups. If you are unsure which option to choose, call (317) 846-3073 and we can help match the appointment to your hair goals.",
   },
   {
     question: "Where is Glow Salon & Spa located?",

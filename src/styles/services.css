@@ -49,6 +49,53 @@ html {
     line-height: 1.7;
 }
 
+.service-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+    gap: 1.5rem;
+    margin: 0 0 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--blush);
+    border-bottom: 1px solid var(--blush);
+}
+
+.service-detail-grid h2 {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    color: var(--deep);
+    font-size: 1.45rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+}
+
+.service-detail-grid p,
+.service-detail-grid li {
+    font-family: 'Jost', sans-serif;
+    color: var(--warm-gray);
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+.service-detail-grid p {
+    margin: 0;
+}
+
+.service-detail-grid ul {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.service-detail-grid a {
+    color: var(--deep);
+    text-decoration-color: var(--rose);
+    text-underline-offset: 0.2em;
+}
+
+.service-detail-grid a:hover {
+    color: var(--rose);
+}
+
 .services-list {
     display: flex;
     flex-direction: column;
@@ -79,5 +126,10 @@ html {
     
     .service-container {
         padding: 0 10px;
+    }
+
+    .service-detail-grid {
+        grid-template-columns: 1fr;
+        padding: 20px 0;
     }
 } 
