@@ -68,6 +68,13 @@ const imageMap: Record<string, ImageMetadata> = {
                   <div class="member-name">{member.name}</div>
                   <div class="member-role">{member.role}</div>
                   <p class="member-bio">{member.description}</p>
+                  {member.specialties && member.specialties.length > 0 && (
+                    <ul class="member-specialties" aria-label={`${member.name} specialties`}>
+                      {member.specialties.map((specialty) => (
+                        <li>{specialty}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             );
@@ -197,6 +204,25 @@ const imageMap: Record<string, ImageMetadata> = {
     color: var(--warm-gray);
     line-height: 1.7;
     margin: 0;
+  }
+
+  .member-specialties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .member-specialties li {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--deep);
+    border: 1px solid var(--blush);
+    padding: 0.35rem 0.55rem;
   }
 
   .team-cta {

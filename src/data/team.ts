@@ -8,6 +8,7 @@ export interface TeamMember {
   role: string;
   description: string;
   image: string;
+  specialties?: string[];
   isOwner?: boolean;
 }
 
@@ -24,22 +25,25 @@ export const teamMembers: TeamMember[] = [
     name: "Laura",
     role: "Manager | Hair & Bridal Stylist",
     description:
-      "Previous owner who created Glow Salon in 2013, now serving as our talented manager and expert stylist specializing in hair and bridal services.",
+      "Previous owner who created Glow Salon in 2013, now serving as our talented manager and expert stylist. Laura is especially strong with hair color, balayage, updos, and bridal styling.",
     image: "laura",
+    specialties: ["Hair color", "Balayage", "Updos", "Bridal styling"],
   },
   {
     name: "Julia",
     role: "Hair Stylist | Lead Bridal Hair Stylist, Makeup Artist",
     description:
-      "Our lead bridal specialist with exceptional skills in hair styling and makeup artistry.",
+      "Our lead bridal specialist with exceptional skills in styling, color, makeup artistry, and wedding hair styles.",
     image: "julia",
+    specialties: ["Bridal hair", "Wedding styles", "Hair color", "Makeup"],
   },
   {
     name: "Emily",
     role: "Nail Technician",
     description:
-      "Emily is an expert nail technician providing beautiful manicures and pedicure services.",
+      "Emily is our nail-focused specialist providing beautiful manicures, pedicures, gel polish, and dip nail services.",
     image: "emily",
+    specialties: ["Manicures", "Pedicures", "Gel polish", "Dip nails"],
   },
   {
     name: "Hannah",
@@ -49,4 +53,3 @@ export const teamMembers: TeamMember[] = [
     image: "hannah",
   },
 ];
-
