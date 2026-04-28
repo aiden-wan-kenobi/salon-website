@@ -1,0 +1,6 @@
+/products /services/ 301!
+/products/* /services/ 301!
+
+http://glowsalonwestclay.com/* https://www.glowsalonwestclay.com/:splat 301!
+https://glowsalonwestclay.com/* https://www.glowsalonwestclay.com/:splat 301!
+http://www.glowsalonwestclay.com/* https://www.glowsalonwestclay.com/:splat 301!

@@ -11,6 +11,7 @@ import {
 	generatePersonSchemas,
 	generateArticleSchema,
 } from '../utils/structuredData';
+import { getCanonicalUrl } from '../utils/seo';
 import { BUSINESS_INFO } from '../config/constants';
 import Analytics from '@vercel/analytics/astro';
 
@@ -42,6 +43,9 @@ const {
 	isHomepage = false,
 } = Astro.props;
 
+const normalizedCanonicalURL = canonicalURL
+	? getCanonicalUrl(new URL(canonicalURL, BUSINESS_INFO.website).pathname)
+	: getCanonicalUrl(Astro.url.pathname);
 const hairSalonSchema = generateHairSalonSchema();
 const personSchemas = generatePersonSchemas();
 
@@ -50,7 +54,7 @@ if (articlePublishedTime) {
 	articleSchema = generateArticleSchema(
 		title,
 		description,
-		canonicalURL,
+		normalizedCanonicalURL,
 		articlePublishedTime,
 		articleModifiedTime,
 		articleAuthor,
@@ -117,7 +121,7 @@ if (articlePublishedTime) {
 		<link rel="manifest" href="/site.webmanifest">
 
 		<!-- Canonical URL -->
-		<link rel="canonical" href={canonicalURL} />
+		<link rel="canonical" href={normalizedCanonicalURL} />
 
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
@@ -130,7 +134,7 @@ if (articlePublishedTime) {
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content={ogType}>
-		<meta property="og:url" content={canonicalURL}>
+		<meta property="og:url" content={normalizedCanonicalURL}>
 		<meta property="og:title" content={title}>
 		<meta property="og:description" content={description}>
 		<meta property="og:image" content={ogImage}>
@@ -148,7 +152,7 @@ if (articlePublishedTime) {
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content={canonicalURL}>
+		<meta property="twitter:url" content={normalizedCanonicalURL}>
 		<meta property="twitter:title" content={title}>
 		<meta property="twitter:description" content={description}>
 		<meta property="twitter:image" content={ogImage}>

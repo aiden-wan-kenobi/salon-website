@@ -1,5 +1,6 @@
 import { BUSINESS_INFO, AREAS_SERVED } from "../config/constants";
 import { reviews } from "../data/reviews";
+import { getCanonicalUrl } from "./seo";
 
 export interface Service {
   serviceName: string;
@@ -29,7 +30,7 @@ export function generateHairSalonSchema() {
     "@id": `${BUSINESS_INFO.website}/#business`,
     name: BUSINESS_INFO.name,
     image: `${BUSINESS_INFO.website}/glow-salon-logo.webp`,
-    url: BUSINESS_INFO.website,
+    url: getCanonicalUrl("/"),
     telephone: `+1${BUSINESS_INFO.phone.replace(/-/g, "")}`,
     email: BUSINESS_INFO.email,
     priceRange: BUSINESS_INFO.priceRange,
@@ -141,7 +142,7 @@ export function generatePersonSchemas() {
       jobTitle: "Owner",
       image: `${BUSINESS_INFO.website}/team/jared.webp`,
       worksFor: generateHairSalonRef(),
-      url: `${BUSINESS_INFO.website}/team`,
+      url: getCanonicalUrl("/team"),
     },
     {
       "@context": "https://schema.org",
@@ -152,7 +153,7 @@ export function generatePersonSchemas() {
       image: `${BUSINESS_INFO.website}/team/laura_brock.webp`,
       knowsAbout: ["Hair color", "Balayage", "Updos", "Bridal hair styling"],
       worksFor: generateHairSalonRef(),
-      url: `${BUSINESS_INFO.website}/team`,
+      url: getCanonicalUrl("/team"),
     },
     {
       "@context": "https://schema.org",
@@ -163,7 +164,7 @@ export function generatePersonSchemas() {
       image: `${BUSINESS_INFO.website}/team/julia_zeffner.webp`,
       knowsAbout: ["Bridal hair", "Wedding hair styles", "Hair color", "Makeup artistry"],
       worksFor: generateHairSalonRef(),
-      url: `${BUSINESS_INFO.website}/team`,
+      url: getCanonicalUrl("/team"),
     },
     {
       "@context": "https://schema.org",
@@ -174,7 +175,7 @@ export function generatePersonSchemas() {
       image: `${BUSINESS_INFO.website}/team/emily_saunders.webp`,
       knowsAbout: ["Manicures", "Pedicures", "Gel polish", "Dip nails"],
       worksFor: generateHairSalonRef(),
-      url: `${BUSINESS_INFO.website}/team`,
+      url: getCanonicalUrl("/team"),
     },
     {
       "@context": "https://schema.org",
@@ -184,7 +185,7 @@ export function generatePersonSchemas() {
       jobTitle: "Stylist",
       image: `${BUSINESS_INFO.website}/team/hannah_d.webp`,
       worksFor: generateHairSalonRef(),
-      url: `${BUSINESS_INFO.website}/team`,
+      url: getCanonicalUrl("/team"),
     },
   ];
 }
@@ -368,25 +369,25 @@ export function generateServiceListSchema() {
         "@type": "ListItem",
         position: 1,
         name: "Hair Services",
-        url: `${BUSINESS_INFO.website}/services/hair`,
+        url: getCanonicalUrl("/services/hair"),
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Nail Services",
-        url: `${BUSINESS_INFO.website}/services/nails`,
+        url: getCanonicalUrl("/services/nails"),
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Waxing & Makeup Services",
-        url: `${BUSINESS_INFO.website}/services/makeup`,
+        url: getCanonicalUrl("/services/makeup"),
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Bridal Hair & Makeup",
-        url: `${BUSINESS_INFO.website}/services/bridal`,
+        url: getCanonicalUrl("/services/bridal"),
       },
     ],
   };

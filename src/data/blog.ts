@@ -17,6 +17,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "bob-lob-haircuts-2026-carmel",
+    title: "The Bob and Lob: Spring 2026's Most-Requested Haircuts at Our Carmel Salon",
+    description: "Thinking about going shorter this spring? Our Carmel stylists break down the bob, lob, and trending variations like the cloud bob and choppy lob — plus how to choose the right one for your hair.",
+    publishedDate: "2026-04-03",
+    author: "Glow Salon & Spa",
+    category: "Hair",
+    tags: ["bob haircut", "lob haircut", "spring 2026 haircuts", "short hair", "Carmel IN", "Indianapolis", "haircut trends 2026"],
+    readTime: "5 min read",
+  },
+  {
     slug: "low-maintenance-hair-color-carmel",
     title: "Best Low-Maintenance Hair Colors for Busy Schedules: A Carmel Stylist's Guide",
     description: "Short on time between appointments? Our Carmel stylists share the best low-maintenance hair color options that look fresh for weeks — from root smudges to lived-in balayage.",

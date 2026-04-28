@@ -7,12 +7,12 @@ export default defineConfig({
   site: "https://www.glowsalonwestclay.com/",
   base: "/",
   output: "static",
-  trailingSlash: "never",
+  trailingSlash: "always",
   integrations: [
     sitemap({
       serialize(item) {
-        const url = item.url.replace(/\/$/, '');
-        const path = url.replace('https://www.glowsalonwestclay.com', '');
+        const url = new URL(item.url);
+        const path = url.pathname.replace(/\/$/, '');
 
         if (path === '' || path === '/') {
           item.priority = 1.0;

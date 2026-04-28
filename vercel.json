@@ -1,0 +1,25 @@
+{
+  "redirects": [
+    {
+      "source": "/products",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/products/:path*",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "glowsalonwestclay.com"
+        }
+      ],
+      "destination": "https://www.glowsalonwestclay.com/:path*",
+      "permanent": true
+    }
+  ]
+}

@@ -5,13 +5,19 @@
  */
 import { generateBreadcrumbSchema } from "../../utils/structuredData";
 import type { BreadcrumbItem } from "../../utils/structuredData";
+import { getCanonicalUrl } from "../../utils/seo";
 
 interface Props {
   items: BreadcrumbItem[];
 }
 
 const { items } = Astro.props;
-const breadcrumbData = generateBreadcrumbSchema(items);
+const breadcrumbData = generateBreadcrumbSchema(
+  items.map((item) => ({
+    ...item,
+    url: getCanonicalUrl(new URL(item.url, Astro.site).pathname),
+  }))
+);
 ---
 
 <script
@@ -19,4 +25,3 @@ const breadcrumbData = generateBreadcrumbSchema(items);
   type="application/ld+json"
   set:html={JSON.stringify(breadcrumbData)}
 ></script>
-
