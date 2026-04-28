@@ -55,7 +55,7 @@ export const BUSINESS_INFO = {
   formspreeId: "mkgjnwqo",
   aggregateRating: {
     ratingValue: 4.6,
-    reviewCount: 51,
+    reviewCount: 55,
     bestRating: 5,
     worstRating: 1,
   },
@@ -138,4 +138,3 @@ export const NAVIGATION_LINKS = [
   { href: "/blog", label: "Blog" },
   { href: "https://glowsalonwestclay.glossgenius.com/shop/gift-cards", label: "Gift Cards", external: true },
 ] as const;
-

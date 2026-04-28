@@ -4,6 +4,7 @@
  * Single Responsibility: Display customer reviews in a 3-card grid
  */
 import { reviews } from '../data/reviews';
+import { BUSINESS_INFO } from '../config/constants';
 const displayReviews = reviews.slice(0, 3);
 ---
 
@@ -12,7 +13,23 @@ const displayReviews = reviews.slice(0, 3);
     <div class="reviews-header">
       <p class="section-eyebrow">Client Love</p>
       <h2 class="section-title">What our clients are <em>saying.</em></h2>
-      <p class="reviews-subtitle">Real words from the women we get to serve</p>
+      <p class="reviews-subtitle">
+        {BUSINESS_INFO.aggregateRating.ratingValue} stars across {BUSINESS_INFO.aggregateRating.reviewCount} Google reviews
+      </p>
+      <div class="review-summary" aria-label="Google review summary">
+        <div>
+          <strong>{BUSINESS_INFO.aggregateRating.ratingValue}★</strong>
+          <span>Google rating</span>
+        </div>
+        <div>
+          <strong>{BUSINESS_INFO.aggregateRating.reviewCount}</strong>
+          <span>Google reviews</span>
+        </div>
+        <div>
+          <strong>47</strong>
+          <span>five-star reviews</span>
+        </div>
+      </div>
       <div class="divider"><span class="divider-icon">✦</span></div>
     </div>
 
@@ -25,6 +42,7 @@ const displayReviews = reviews.slice(0, 3);
           {review.services && (
             <div class="review-service">{review.services[0]}{review.stylist ? ` · ${review.stylist}` : ''}</div>
           )}
+          {review.source && <div class="review-source">{review.source} review</div>}
         </div>
       ))}
     </div>
@@ -75,6 +93,41 @@ const displayReviews = reviews.slice(0, 3);
     color: var(--warm-gray);
     margin: 0 0 2rem;
     font-weight: 300;
+  }
+
+  .review-summary {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0 auto 2rem;
+  }
+
+  .review-summary div {
+    min-width: 130px;
+    border: 1px solid var(--blush);
+    background: rgba(255, 255, 255, 0.55);
+    padding: 0.9rem 1rem;
+  }
+
+  .review-summary strong,
+  .review-summary span {
+    display: block;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .review-summary strong {
+    color: var(--deep);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .review-summary span {
+    color: var(--warm-gray);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
   }
 
   .divider {
@@ -148,6 +201,15 @@ const displayReviews = reviews.slice(0, 3);
     font-size: 0.7rem;
     color: var(--rose);
     margin-top: 0.25rem;
+  }
+
+  .review-source {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 0.6rem;
   }
 
   @media (max-width: 900px) {

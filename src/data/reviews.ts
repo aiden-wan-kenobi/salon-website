@@ -11,17 +11,40 @@ export interface Review {
   services?: string[];
   stylist?: string;
   priceRange?: string;
+  source?: string;
+  date?: string;
 }
 
 export const reviews: Review[] = [
   {
+    id: "svetlana-berman",
+    name: "Svetlana Berman",
+    rating: 5,
+    text: "Laura is fantastic! Many thanks!",
+    services: ["Hair services"],
+    stylist: "Laura",
+    source: "Google",
+    date: "2026-03-21",
+  },
+  {
     id: "ingrid-lohneiss",
     name: "Ingrid Lohneiss",
     rating: 5,
-    text: "Julia is very good about considering your hair's texture when applying color and styling. Great experience overall.",
-    services: ["Shampoo & conditioning", "Blowouts", "Hairstyling"],
+    text: "Julia is great about considering your hair's texture and weight when applying color and styling.",
+    services: ["Color", "Hairstyling"],
     stylist: "Julia",
-    priceRange: "$120-140",
+    source: "Google",
+    date: "2026-03-11",
+  },
+  {
+    id: "brenna-oboyle",
+    name: "Brenna O'Boyle",
+    rating: 5,
+    text: "My hair and my bridesmaids hair was looking soooo fabulous for my wedding day. Highly highly highly recommend!",
+    services: ["Bridal hair", "Wedding styling"],
+    stylist: "Julia",
+    source: "Google",
+    date: "2026-01-22",
   },
   {
     id: "melanie-brooks",
@@ -31,6 +54,36 @@ export const reviews: Review[] = [
     services: ["Shampoo & conditioning", "Haircut", "Hairstyling"],
     stylist: "Laura",
     priceRange: "$160-180",
+  },
+  {
+    id: "jane-bready",
+    name: "Jane Bready",
+    rating: 5,
+    text: "Professional and friendly staff with excellent service for haircuts, color, highlights, manicures, pedicures, and brow waxing.",
+    services: ["Hair color", "Highlights", "Nails", "Brow waxing"],
+    stylist: "Laura",
+    source: "Google",
+    date: "2025-12-11",
+  },
+  {
+    id: "kay-pashos",
+    name: "Kay Pashos",
+    rating: 5,
+    text: "Color, cut, blowouts, styling - they can do it all!",
+    services: ["Color", "Haircut", "Blowouts", "Styling"],
+    stylist: "Laura",
+    source: "Google",
+    date: "2025-10-08",
+  },
+  {
+    id: "marcia-mink",
+    name: "Marcia Mink",
+    rating: 5,
+    text: "Manicure with Emily.",
+    services: ["Manicure"],
+    stylist: "Emily",
+    source: "Google",
+    date: "2025-10-02",
   },
   {
     id: "madeline-pritchett",
@@ -67,4 +120,3 @@ export const reviews: Review[] = [
     stylist: "Laura",
   },
 ];
-
