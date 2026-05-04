@@ -17,6 +17,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "summer-frizz-control-carmel-indiana",
+    title: "How to Beat Indiana Humidity: Salon Treatments That Keep Your Hair Frizz-Free All Summer",
+    description: "Indiana summers mean humidity, and humidity means frizz. Our Carmel stylists explain which professional smoothing treatments actually work — and how to keep results all season long.",
+    publishedDate: "2026-05-03",
+    author: "Glow Salon & Spa",
+    category: "Hair Care",
+    tags: ["frizz control", "keratin treatment", "smoothing treatment", "summer hair care", "humidity hair", "Carmel IN", "Indianapolis"],
+    readTime: "6 min read",
+  },
+  {
     slug: "bob-lob-haircuts-2026-carmel",
     title: "The Bob and Lob: Spring 2026's Most-Requested Haircuts at Our Carmel Salon",
     description: "Thinking about going shorter this spring? Our Carmel stylists break down the bob, lob, and trending variations like the cloud bob and choppy lob — plus how to choose the right one for your hair.",
