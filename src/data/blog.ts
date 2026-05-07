@@ -17,6 +17,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "dimensional-hair-color-carmel-indiana",
+    title: "Dimensional Hair Color in Carmel, Indiana: Highlights, Lowlights, Gloss & Lived-In Color",
+    description: "Looking for dimensional hair color in Carmel, Indiana? Our stylists explain highlights, lowlights, glosses, brunette color, blonde dimension, and how to choose the right color service.",
+    publishedDate: "2026-05-06",
+    author: "Glow Salon & Spa",
+    category: "Hair Color",
+    tags: ["dimensional hair color", "hair color Carmel Indiana", "highlights Carmel IN", "brunette color", "blonde highlights", "lived-in color", "Village of West Clay"],
+    readTime: "6 min read",
+  },
+  {
     slug: "bob-lob-haircuts-2026-carmel",
     title: "The Bob and Lob: Spring 2026's Most-Requested Haircuts at Our Carmel Salon",
     description: "Thinking about going shorter this spring? Our Carmel stylists break down the bob, lob, and trending variations like the cloud bob and choppy lob — plus how to choose the right one for your hair.",
