@@ -69,6 +69,14 @@ export const nailFAQs: FAQItem[] = [
     question: "Where is the best nail salon near the Village of West Clay?",
     answer: "Glow Salon & Spa is located right in the Village of West Clay at 1928 Rhettsbury St, Carmel, IN 46032. We offer classic manicures, gel manicures, dip manicures, and pedicures. Call us at (317) 846-3073 to book your appointment.",
   },
+  {
+    question: "Do you offer gel and dip nails in Carmel?",
+    answer: "Yes. Glow Salon & Spa offers gel manicures and dip manicures in Carmel's Village of West Clay. Gel manicures are $50 and dip manicures are $60.",
+  },
+  {
+    question: "Do I need an appointment for nail services?",
+    answer: "Appointments are recommended so Emily or another available technician can reserve enough time for your manicure or pedicure. You can book online or call (317) 846-3073.",
+  },
 ];
 
 export const makeupFAQs: FAQItem[] = [
@@ -91,6 +99,71 @@ export const makeupFAQs: FAQItem[] = [
   {
     question: "Where can I get a brow wax in Carmel, Indiana?",
     answer: "Glow Salon & Spa offers brow waxing for $15 and lip waxing for $10 in the Village of West Clay, Carmel, Indiana. These are quick services that can often be added to another appointment. Call (317) 846-3073 to schedule.",
+  },
+];
+
+export const hairColorFAQs: FAQItem[] = [
+  {
+    question: "Where can I get hair color near Carmel, Indiana?",
+    answer: "Glow Salon & Spa offers hair color, highlights, dimensional color, balayage consultations, glosses, and glazes in Carmel's Village of West Clay. We serve clients from Carmel, Westfield, Zionsville, Fishers, Noblesville, and northwest Indianapolis.",
+  },
+  {
+    question: "What is the difference between highlights and dimensional color?",
+    answer: "Highlights add lighter pieces through the hair, while dimensional color uses multiple tones to create depth, movement, and a softer grow-out. Your stylist can recommend the right option based on your current color, maintenance goals, and desired brightness.",
+  },
+  {
+    question: "Do you offer low-maintenance hair color?",
+    answer: "Yes. Dimensional color, balayage, root smudges, glosses, and glazes are popular low-maintenance options because they grow out softer than high-contrast color.",
+  },
+  {
+    question: "How much does hair color cost at Glow Salon & Spa?",
+    answer: "Color glaze starts at $70, all-over color starts at $130, dimensional color starts at $140, and highlights start at $135. Balayage is priced upon consultation.",
+  },
+  {
+    question: "Can I book a color consultation before choosing a service?",
+    answer: "Yes. If you are unsure whether to book highlights, dimensional color, balayage, or a glaze, call (317) 846-3073 and we can help you choose the best appointment type.",
+  },
+];
+
+export const haircutFAQs: FAQItem[] = [
+  {
+    question: "Where can I get a haircut near Carmel, Indiana?",
+    answer: "Glow Salon & Spa offers women's haircuts, men's haircuts, children's haircuts, blowouts, shampoo styles, and event styling in Carmel's Village of West Clay.",
+  },
+  {
+    question: "How much is a haircut at Glow Salon & Spa?",
+    answer: "Women's short haircuts with blow-dry are $55, women's long haircuts with blow-dry are $65, men's haircuts are $35, and children's haircuts for ages 12 and under are $30.",
+  },
+  {
+    question: "Do you offer blowouts with haircuts?",
+    answer: "Yes. Women's haircut services include a blow-dry, and we also offer shampoo and style appointments for short, medium, and long hair.",
+  },
+  {
+    question: "Can you help me choose a haircut for my face shape?",
+    answer: "Yes. Your stylist can talk through your face shape, hair texture, styling routine, and maintenance preferences before cutting.",
+  },
+  {
+    question: "Do you accept walk-ins for haircuts?",
+    answer: "Walk-ins are welcome based on availability, but appointments are recommended so we can reserve time with the right stylist for your haircut.",
+  },
+];
+
+export const waxingFAQs: FAQItem[] = [
+  {
+    question: "Where can I get brow waxing in Carmel, Indiana?",
+    answer: "Glow Salon & Spa offers brow waxing and lip waxing in Carmel's Village of West Clay at 1928 Rhettsbury St.",
+  },
+  {
+    question: "How much is brow waxing or lip waxing?",
+    answer: "Brow waxing is $15 and lip waxing is $10 at Glow Salon & Spa.",
+  },
+  {
+    question: "Can I add waxing to another salon appointment?",
+    answer: "Yes. Brow waxing and lip waxing are quick services and can often be added to hair, nail, or makeup appointments when time is available.",
+  },
+  {
+    question: "Do I need an appointment for waxing?",
+    answer: "Appointments are recommended, especially if you want to add waxing to another service. Walk-ins may be available depending on the schedule.",
   },
 ];
 

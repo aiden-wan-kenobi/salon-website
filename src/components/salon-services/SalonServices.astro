@@ -89,6 +89,13 @@ const standardServices = [
         ))}
       </div>
 
+      <nav class="service-quick-links" aria-label="Popular salon service pages">
+        <a href="/services/hair-color-carmel-in/">Hair Color</a>
+        <a href="/services/haircuts-carmel-in/">Haircuts</a>
+        <a href="/services/waxing-carmel-in/">Waxing</a>
+        <a href="/hair-salon-carmel-in/">Hair Salon in Carmel</a>
+      </nav>
+
     </div>
   </div>
 </section>
@@ -332,6 +339,31 @@ const standardServices = [
   .service-card:hover .service-card-link {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .service-quick-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .service-quick-links a {
+    border: 1px solid var(--blush);
+    color: var(--deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.74rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.7rem 1rem;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .service-quick-links a:hover {
+    background: var(--cream);
+    border-color: var(--rose);
+    color: var(--rose);
   }
 
   /* Responsive */

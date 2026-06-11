@@ -4,20 +4,54 @@
  * Single Responsibility: Display low-maintenance hair color content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
+import FAQSection from '../../components/FAQSection.astro';
 import { blogPosts } from '../../data/blog';
+import type { FAQItem } from '../../utils/structuredData';
 
 const post = blogPosts.find(p => p.slug === 'low-maintenance-hair-color-carmel')!;
+
+const lowMaintenanceFAQs: FAQItem[] = [
+    {
+        question: "What is the most time-efficient way to maintain hair color?",
+        answer: "The most time-efficient approach is to choose a blended color service, such as balayage, lived-in dimensional color, or a root smudge, then use a quick gloss or glaze between larger color appointments.",
+    },
+    {
+        question: "What hair color grows out the best?",
+        answer: "Balayage, lived-in color, root smudges, and soft dimensional color usually grow out best because they blend into your natural root instead of creating a hard line.",
+    },
+    {
+        question: "How often should I refresh low-maintenance hair color?",
+        answer: "Many low-maintenance color clients can go 8 to 12 weeks between larger appointments, with a gloss or glaze around the midpoint if they want more shine or tone correction.",
+    },
+    {
+        question: "Can I get low-maintenance hair color in Carmel, Indiana?",
+        answer: "Yes. Glow Salon & Spa offers dimensional color, highlights, balayage consultations, root-smudge-style color planning, glosses, and glazes in Carmel's Village of West Clay.",
+    },
+];
 ---
 
 <BlogPostLayout
     title={post.title}
     description={post.description}
     publishedDate={post.publishedDate}
+    modifiedDate={post.modifiedDate}
     author={post.author}
     category={post.category}
     tags={post.tags}
     readTime={post.readTime}
 >
+    <aside class="answer-box" aria-label="Quick answer">
+        <h2>Quick Answer</h2>
+        <p>
+            The most time-efficient way to maintain hair color with a busy schedule is to choose
+            a blended service like balayage, lived-in dimensional color, or a root smudge, then
+            refresh the tone with a quick gloss or glaze between bigger appointments. At Glow Salon
+            &amp; Spa in Carmel, this usually means planning a color that can grow out softly for
+            8 to 12 weeks instead of needing constant root touch-ups.
+        </p>
+        <p><a href="/services/hair-color-carmel-in/">View hair color services and pricing</a></p>
+    </aside>
+
     <p>Between work, kids, errands, and everything else on your plate, spending three hours at the salon every six weeks is not always realistic. The good news is that some of the most beautiful hair color techniques right now are specifically designed to grow out gracefully and look intentional for months between appointments. Our stylists at Glow Salon &amp; Spa in Carmel work with busy clients every day, and these are the color options we recommend most.</p>
 
     <h2>What Makes a Hair Color Low-Maintenance?</h2>
@@ -57,6 +91,41 @@ const post = blogPosts.find(p => p.slug === 'low-maintenance-hair-color-carmel')
 
     <p>Glosses and glazes are some of the fastest services we offer. Most take about thirty minutes from start to finish, making them easy to fit into a lunch break or a quick stop between errands.</p>
 
+    <h2>Low-Maintenance Color Options Compared</h2>
+    <div class="comparison-table-wrap">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Color option</th>
+                    <th>Best for</th>
+                    <th>Typical maintenance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Balayage</td>
+                    <td>Soft brightness that grows out naturally</td>
+                    <td>Often 10 to 16 weeks, with optional glaze refreshes</td>
+                </tr>
+                <tr>
+                    <td>Root smudge</td>
+                    <td>Blending highlight regrowth</td>
+                    <td>Often added between larger highlight appointments</td>
+                </tr>
+                <tr>
+                    <td>Lived-in dimensional color</td>
+                    <td>Depth, movement, and subtle brightness</td>
+                    <td>Often 8 to 12 weeks depending on contrast</td>
+                </tr>
+                <tr>
+                    <td>Gloss or glaze</td>
+                    <td>Shine, tone correction, and quick refreshes</td>
+                    <td>Usually 4 to 6 weeks</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <h2>Color Tips for Maximizing Time Between Appointments</h2>
     <p>No matter which technique you choose, a few habits will help your color stay vibrant longer:</p>
 
@@ -81,5 +150,70 @@ const post = blogPosts.find(p => p.slug === 'low-maintenance-hair-color-carmel')
     <p>If you are not sure where to start, a color consultation is the best first step. Your stylist will look at your natural color, hair texture, and lifestyle and recommend the approach that will give you the look you want with the schedule you actually have.</p>
 
     <h2>Book Your Color Consultation</h2>
-    <p>Ready to find a color that works with your schedule instead of against it? Our stylists at Glow Salon &amp; Spa in Carmel are here to help. Call us at <a href="tel:+13178463073">(317) 846-3073</a> or <a href="/contact/">contact us online</a> to book your consultation. View our full <a href="/services/hair/">hair color services and pricing</a>.</p>
+    <p>Ready to find a color that works with your schedule instead of against it? Our stylists at Glow Salon &amp; Spa in Carmel are here to help. Call us at <a href="tel:+13178463073">(317) 846-3073</a> or <a href="/contact/">contact us online</a> to book your consultation. View our full <a href="/services/hair-color-carmel-in/">hair color services and pricing</a>.</p>
+
+    <div class="color-cta">
+        <h2>Book Hair Color in Carmel</h2>
+        <p>
+            Explore highlights, dimensional color, all-over color, color glazes, and balayage
+            consultations before choosing your appointment.
+        </p>
+        <a href="/services/hair-color-carmel-in/">See Hair Color Services</a>
+    </div>
+
+    <FAQSection faqs={lowMaintenanceFAQs} heading="Low-Maintenance Hair Color FAQs" />
 </BlogPostLayout>
+
+<style>
+    .answer-box {
+        background: #faf8f6;
+        border-left: 4px solid var(--rose);
+        padding: 1.5rem;
+        margin: 0 0 2rem;
+    }
+
+    .answer-box h2,
+    .color-cta h2 {
+        margin-top: 0;
+    }
+
+    .comparison-table-wrap {
+        overflow-x: auto;
+        margin: 0 0 2rem;
+    }
+
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Jost', sans-serif;
+        font-size: 0.9rem;
+        min-width: 560px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        border: 1px solid var(--blush);
+        padding: 0.85rem;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .comparison-table th {
+        background: var(--cream);
+        color: var(--deep);
+        font-weight: 500;
+    }
+
+    .color-cta {
+        background: var(--cream);
+        border-top: 1px solid var(--blush);
+        border-bottom: 1px solid var(--blush);
+        padding: 1.5rem;
+        margin: 2.5rem 0;
+    }
+
+    .color-cta a {
+        display: inline-block;
+        margin-top: 0.25rem;
+    }
+</style>
