@@ -2,8 +2,8 @@
 import ServicePage from '../../components/salon-services/ServicePage.astro';
 import { makeupFAQs } from '../../data/faqs';
 
-const title = "Waxing & Makeup in Carmel, Indiana | Glow Salon & Spa";
-const description = "Professional brow waxing, lip waxing, and glam makeup application at Glow Salon & Spa in Carmel, Indiana. Walk-ins welcome for waxing. Call (317) 846-3073.";
+const title = "Waxing & Makeup in Carmel, IN | Brow Waxing, Lip Waxing & Glam | Glow Salon & Spa";
+const description = "Brow waxing, lip waxing, makeup touch-ups, and glam makeup application at Glow Salon & Spa in Carmel, Indiana's Village of West Clay.";
 
 const waxing_makeup = [
     { serviceName: "Brow Wax", price: "$15" },
@@ -17,19 +17,39 @@ const waxing_makeup = [
     title={title}
     description={description}
     pageTitle="Waxing & Makeup in Carmel, IN"
-    introText="Professional waxing and makeup services in Carmel, Indiana. Glow Salon & Spa offers brow waxing, lip waxing, and glam makeup application in the Village of West Clay. Serving Carmel, Westfield, Fishers, Noblesville, and the Indianapolis area."
+    introText="Professional waxing and makeup services in Carmel, Indiana. Glow Salon & Spa offers brow waxing, lip waxing, makeup touch-ups, and glam makeup application in the Village of West Clay. Serving Carmel, Westfield, Fishers, Noblesville, and northwest Indianapolis."
     services={waxing_makeup}
     faqs={makeupFAQs}
-/>
+>
+    <section slot="introDetails" class="service-detail-grid" aria-labelledby="waxing-makeup-heading">
+        <div>
+            <h2 id="waxing-makeup-heading">Quick waxing and polished event makeup</h2>
+            <p>
+                Book brow waxing or lip waxing as a standalone appointment, or pair a quick wax with
+                hair, nails, or makeup when the schedule allows. Our makeup services include light
+                touch-ups and glam applications for events, photos, evenings out, and celebrations.
+            </p>
+        </div>
+        <div>
+            <h2>Popular Appointments</h2>
+            <ul>
+                <li><a href="/services/waxing-carmel-in/">Brow and lip waxing in Carmel</a></li>
+                <li><a href="#makeup-touch-up-service">Makeup touch-ups</a></li>
+                <li><a href="#glam-makeup-application">Glam makeup application</a></li>
+                <li><a href="/services/bridal/">Bridal hair and makeup</a></li>
+            </ul>
+        </div>
+    </section>
 
-<section class="related-services-section">
-    <h2 class="related-heading">Related Services</h2>
-    <ul class="related-list">
-        <li><a href="/services/hair/">Hair Services - Cuts, Color &amp; Balayage</a></li>
-        <li><a href="/services/nails/">Nail Services - Manicures &amp; Pedicures</a></li>
-        <li><a href="/services/bridal/">Bridal Hair &amp; Makeup Packages</a></li>
-    </ul>
-</section>
+    <section class="related-services-section">
+        <h2 class="related-heading">Related Services</h2>
+        <ul class="related-list">
+            <li><a href="/services/hair/">Hair Services - Cuts, Color &amp; Balayage</a></li>
+            <li><a href="/services/nails/">Nail Services - Manicures &amp; Pedicures</a></li>
+            <li><a href="/services/bridal/">Bridal Hair &amp; Makeup Packages</a></li>
+        </ul>
+    </section>
+</ServicePage>
 
 <style>
     .related-services-section {

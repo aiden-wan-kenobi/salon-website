@@ -41,6 +41,7 @@ export const blogPosts: BlogPost[] = [
     title: "Best Low-Maintenance Hair Colors for Busy Schedules: A Carmel Stylist's Guide",
     description: "Short on time between appointments? Our Carmel stylists share the best low-maintenance hair color options that look fresh for weeks — from root smudges to lived-in balayage.",
     publishedDate: "2026-04-02",
+    modifiedDate: "2026-06-11",
     author: "Glow Salon & Spa",
     category: "Hair Color",
     tags: ["low maintenance hair color", "balayage", "root smudge", "Carmel IN", "Indianapolis", "hair color for busy moms"],

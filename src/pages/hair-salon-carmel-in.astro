@@ -12,8 +12,8 @@ import hairImage from '../assets/services/hair.webp';
 import bridalImage from '../assets/bridal/IMG_3583.webp';
 import { Image } from 'astro:assets';
 
-const title = "Hair Salon in Carmel, Indiana | Glow Salon & Spa";
-const description = "Looking for a hair salon in Carmel, Indiana? Glow Salon & Spa offers haircuts, dimensional color, highlights, bridal hair, nails, and makeup in the Village of West Clay.";
+const title = "Hair Salon in Carmel, Indiana | Cuts, Color, Nails & Waxing | Glow Salon & Spa";
+const description = "Looking for a hair salon in Carmel, Indiana? Glow Salon & Spa offers haircuts, dimensional color, highlights, nails, brow waxing, makeup, and bridal beauty in the Village of West Clay.";
 
 const featuredServices: Service[] = [
   { serviceName: "Women's Haircuts & Blowouts", price: "Starting at $55" },
@@ -67,12 +67,13 @@ const localReviewHighlights = reviews.filter((review) =>
       <h1>Hair Salon in Carmel, Indiana</h1>
       <p class="hero-copy">
         Glow Salon & Spa is a full-service salon in Carmel's Village of West Clay,
-        offering haircuts, dimensional color, highlights, bridal hair, nails, waxing,
-        and makeup for clients across Carmel and nearby northside communities.
+        offering haircuts, dimensional color, highlights, color glosses, bridal hair,
+        nails, brow waxing, lip waxing, and makeup for clients across Carmel and nearby
+        northside communities.
       </p>
       <div class="hero-actions" aria-label="Book or explore Glow Salon and Spa">
         <a href={BUSINESS_INFO.bookingUrl} target="_blank" rel="noopener noreferrer" class="primary-link">Book Online</a>
-        <a href="/services/hair" class="secondary-link">View Hair Services</a>
+        <a href="/services/hair/" class="secondary-link">View Hair Services</a>
       </div>
     </div>
     <div class="local-hero-image">
@@ -95,8 +96,9 @@ const localReviewHighlights = reviews.filter((review) =>
     <div class="intro-copy">
       <p>
         If you are searching for a hair salon near me, a Carmel hair color specialist,
-        or a salon close to the Village of West Clay, Glow Salon & Spa brings hair,
-        nails, makeup, and bridal services together in one relaxed local studio.
+        a nail salon in West Clay, or quick brow waxing close to the Village of West Clay,
+        Glow Salon & Spa brings hair, nails, makeup, waxing, and bridal services together
+        in one relaxed local studio.
       </p>
       <p>
         Our strongest bookings include dimensional color, highlights, haircuts,
@@ -113,22 +115,22 @@ const localReviewHighlights = reviews.filter((review) =>
       <h2 id="popular-services-heading">What Carmel clients book most</h2>
     </div>
     <div class="card-grid">
-      <a href="/services/hair#dimensional-color-w-blow-dry" class="service-card">
+      <a href="/services/hair-color-carmel-in/" class="service-card">
         <span>01</span>
         <h3>Dimensional Color</h3>
         <p>Custom color, gray coverage, low-maintenance depth, and shine-focused color services.</p>
       </a>
-      <a href="/services/hair#full-highlight-w-blow-dry" class="service-card">
+      <a href="/services/hair-color-carmel-in/" class="service-card">
         <span>02</span>
         <h3>Highlights</h3>
         <p>Full and partial highlights with haircut or blow-dry options for natural brightness.</p>
       </a>
-      <a href="/services/hair#women-s-long-haircut-and-blow-dry" class="service-card">
+      <a href="/services/haircuts-carmel-in/" class="service-card">
         <span>03</span>
         <h3>Haircuts & Blowouts</h3>
         <p>Women's cuts, men's cuts, children's cuts, shampoo styles, and polished blowouts.</p>
       </a>
-      <a href="/services/bridal" class="service-card">
+      <a href="/services/bridal/" class="service-card">
         <span>04</span>
         <h3>Bridal Hair & Makeup</h3>
         <p>Trials, wedding-day styling, makeup, and on-site bridal services for Indiana weddings.</p>
@@ -155,7 +157,7 @@ const localReviewHighlights = reviews.filter((review) =>
         <li><strong>Julia:</strong> lead bridal stylist, wedding hair, styling, color, and makeup.</li>
         <li><strong>Emily:</strong> manicures, pedicures, gel polish, and dip nails.</li>
       </ul>
-      <a href="/team" class="text-link">Meet the full team</a>
+      <a href="/team/" class="text-link">Meet the full team</a>
     </div>
   </section>
 
@@ -211,7 +213,7 @@ const localReviewHighlights = reviews.filter((review) =>
     <h2>Ready to book your Carmel salon appointment?</h2>
     <div class="hero-actions">
       <a href={BUSINESS_INFO.bookingUrl} target="_blank" rel="noopener noreferrer" class="primary-link">Book Online</a>
-      <a href="/contact" class="secondary-link">Contact Glow</a>
+      <a href="/contact/" class="secondary-link">Contact Glow</a>
     </div>
   </section>
 

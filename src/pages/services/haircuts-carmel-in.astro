@@ -1,0 +1,114 @@
+---
+import ServicePage from '../../components/salon-services/ServicePage.astro';
+import { haircutFAQs } from '../../data/faqs';
+
+const title = "Haircuts in Carmel, IN | Women's, Men's & Kids' Cuts | Glow Salon & Spa";
+const description = "Haircuts in Carmel, IN for women, men, and children at Glow Salon & Spa in the Village of West Clay. Book cuts, blowouts, shampoo styles, and event styling.";
+
+const haircutServices = [
+  { serviceName: "Women's Short Haircut & Blow-dry", price: "$55" },
+  { serviceName: "Women's Long Haircut & Blow-dry", price: "$65" },
+  { serviceName: "Men's Haircut", price: "$35" },
+  { serviceName: "Children's Haircut (12 and under)", price: "$30" },
+  { serviceName: "Shampoo & Style, Short Hair", price: "$35" },
+  { serviceName: "Shampoo & Style, Medium Hair", price: "$45" },
+  { serviceName: "Shampoo & Style, Long Hair", price: "$55" },
+  { serviceName: "Updo", price: "$60" },
+];
+---
+
+<ServicePage
+  title={title}
+  description={description}
+  pageTitle="Haircuts in Carmel, IN"
+  introText="Glow Salon & Spa offers women's haircuts, men's haircuts, children's haircuts, blowouts, shampoo styles, and updos in Carmel's Village of West Clay. If you are searching for a haircut near me or a hair salon near Carmel, our stylists can help you choose a cut that fits your face shape, texture, and daily routine."
+  services={haircutServices}
+  faqs={haircutFAQs}
+  galleryHeading="Haircuts, Color & Finished Styles"
+  gallerySubtext="Recent hair work from the Glow Salon & Spa team"
+  galleryUrl="/services/hair-gallery/"
+>
+  <section slot="introDetails" class="service-detail-grid" aria-labelledby="haircut-carmel-heading">
+    <div>
+      <h2 id="haircut-carmel-heading">Haircuts, blowouts, and styles close to West Clay</h2>
+      <p>
+        A good haircut should work with your natural texture, styling habits, and maintenance goals.
+        Our stylists offer classic trims, shape changes, short cuts, long layered cuts, men's cuts,
+        children's cuts, blowouts, and event styles for clients across Carmel and nearby communities.
+      </p>
+    </div>
+    <div>
+      <h2>Common Haircut Appointments</h2>
+      <ul>
+        <li><a href="#women-s-long-haircut-and-blow-dry">Women's long haircut and blow-dry</a></li>
+        <li><a href="#women-s-short-haircut-and-blow-dry">Women's short haircut and blow-dry</a></li>
+        <li><a href="#men-s-haircut">Men's haircut</a></li>
+        <li><a href="#shampoo-and-style-long-hair">Shampoo and style</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blog-links-section">
+    <h2 class="blog-links-heading">Haircut Guides</h2>
+    <ul class="blog-links-list">
+      <li><a href="/blog/how-to-choose-the-right-haircut/">How to Choose the Right Haircut for Your Face Shape</a></li>
+      <li><a href="/blog/bob-lob-haircuts-2026-carmel/">The Bob and Lob: Spring 2026's Most-Requested Haircuts</a></li>
+      <li><a href="/blog/spring-hair-repair-tips-carmel-indiana/">How to Repair Winter-Damaged Hair</a></li>
+    </ul>
+  </section>
+
+  <section class="related-services-section">
+    <h2 class="related-heading">Related Services</h2>
+    <ul class="related-list">
+      <li><a href="/services/hair/">All Hair Services</a></li>
+      <li><a href="/services/hair-color-carmel-in/">Hair Color, Highlights, and Glosses</a></li>
+      <li><a href="/hair-salon-carmel-in/">Hair Salon in Carmel, Indiana</a></li>
+    </ul>
+  </section>
+</ServicePage>
+
+<style>
+  .blog-links-section,
+  .related-services-section {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    border-top: 1px solid var(--blush);
+  }
+
+  .blog-links-heading,
+  .related-heading {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--deep);
+    margin: 0 0 1rem;
+  }
+
+  .blog-links-list,
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .blog-links-list li,
+  .related-list li {
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-links-list a,
+  .related-list a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--rose);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .blog-links-list a:hover,
+  .related-list a:hover {
+    color: var(--deep);
+  }
+</style>

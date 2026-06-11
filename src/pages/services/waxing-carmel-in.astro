@@ -1,0 +1,91 @@
+---
+import ServicePage from '../../components/salon-services/ServicePage.astro';
+import { waxingFAQs } from '../../data/faqs';
+
+const title = "Waxing in Carmel, IN | Brow Waxing & Lip Waxing | Glow Salon & Spa";
+const description = "Waxing in Carmel, IN for brow waxing and lip waxing at Glow Salon & Spa in the Village of West Clay. Book a quick wax or add it to another salon service.";
+
+const waxingServices = [
+  { serviceName: "Brow Wax", price: "$15" },
+  { serviceName: "Lip Wax", price: "$10" },
+];
+---
+
+<ServicePage
+  title={title}
+  description={description}
+  pageTitle="Waxing in Carmel, IN"
+  introText="Glow Salon & Spa offers brow waxing and lip waxing in Carmel's Village of West Clay. If you are searching for waxing near me, brow waxing near Carmel, or a quick lip wax you can add to another salon appointment, our team can help you book the right time."
+  services={waxingServices}
+  faqs={waxingFAQs}
+>
+  <section slot="introDetails" class="service-detail-grid" aria-labelledby="waxing-carmel-heading">
+    <div>
+      <h2 id="waxing-carmel-heading">Quick brow and lip waxing in the Village of West Clay</h2>
+      <p>
+        Brow waxing and lip waxing are simple, polished add-ons for clients visiting for hair,
+        nails, makeup, or bridal appointments. You can also book waxing as a standalone visit
+        when the schedule has availability.
+      </p>
+    </div>
+    <div>
+      <h2>Waxing Appointments</h2>
+      <ul>
+        <li><a href="#brow-wax">Brow wax</a></li>
+        <li><a href="#lip-wax">Lip wax</a></li>
+        <li><a href="/services/makeup/">Makeup touch-ups and glam applications</a></li>
+        <li><a href="/services/nails/">Nails, manicures, and pedicures</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="related-services-section">
+    <h2 class="related-heading">Related Services</h2>
+    <ul class="related-list">
+      <li><a href="/services/makeup/">Waxing &amp; Makeup Services</a></li>
+      <li><a href="/services/hair/">Hair Services</a></li>
+      <li><a href="/services/nails/">Nail Services</a></li>
+      <li><a href="/hair-salon-carmel-in/">Hair Salon in Carmel, Indiana</a></li>
+    </ul>
+  </section>
+</ServicePage>
+
+<style>
+  .related-services-section {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    border-top: 1px solid var(--blush);
+  }
+
+  .related-heading {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--deep);
+    margin: 0 0 1rem;
+  }
+
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .related-list li {
+    margin-bottom: 0.6rem;
+  }
+
+  .related-list a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--rose);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .related-list a:hover {
+    color: var(--deep);
+  }
+</style>
