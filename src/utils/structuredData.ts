@@ -1,5 +1,6 @@
 import { BUSINESS_INFO, AREAS_SERVED } from "../config/constants";
 import { reviews } from "../data/reviews";
+import { teamMembers } from "../data/team";
 import { getCanonicalUrl } from "./seo";
 
 export interface Service {
@@ -133,61 +134,17 @@ export function generateHairSalonRef() {
  * Person schema for named stylists.
  */
 export function generatePersonSchemas() {
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": `${BUSINESS_INFO.website}/#jared`,
-      name: "Jared",
-      jobTitle: "Owner",
-      image: `${BUSINESS_INFO.website}/team/jared.webp`,
-      worksFor: generateHairSalonRef(),
-      url: getCanonicalUrl("/team"),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": `${BUSINESS_INFO.website}/#laura-brock`,
-      name: "Laura",
-      jobTitle: "Manager & Hair and Bridal Stylist",
-      image: `${BUSINESS_INFO.website}/team/laura_brock.webp`,
-      knowsAbout: ["Hair color", "Balayage", "Updos", "Bridal hair styling"],
-      worksFor: generateHairSalonRef(),
-      url: getCanonicalUrl("/team"),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": `${BUSINESS_INFO.website}/#julia-zeffner`,
-      name: "Julia Zeffner",
-      jobTitle: "Lead Bridal Hair Stylist & Makeup Artist",
-      image: `${BUSINESS_INFO.website}/team/julia_zeffner.webp`,
-      knowsAbout: ["Bridal hair", "Wedding hair styles", "Hair color", "Makeup artistry"],
-      worksFor: generateHairSalonRef(),
-      url: getCanonicalUrl("/team"),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": `${BUSINESS_INFO.website}/#emily-saunders`,
-      name: "Emily",
-      jobTitle: "Nail Technician",
-      image: `${BUSINESS_INFO.website}/team/emily_saunders.webp`,
-      knowsAbout: ["Manicures", "Pedicures", "Gel polish", "Dip nails"],
-      worksFor: generateHairSalonRef(),
-      url: getCanonicalUrl("/team"),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": `${BUSINESS_INFO.website}/#hannah`,
-      name: "Hannah",
-      jobTitle: "Stylist",
-      image: `${BUSINESS_INFO.website}/team/hannah_d.webp`,
-      worksFor: generateHairSalonRef(),
-      url: getCanonicalUrl("/team"),
-    },
-  ];
+  return teamMembers.map((member) => ({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${BUSINESS_INFO.website}/#${member.id}`,
+    name: member.name,
+    jobTitle: member.role,
+    image: `${BUSINESS_INFO.website}/team/${member.publicImage}`,
+    ...(member.specialties ? { knowsAbout: member.specialties } : {}),
+    worksFor: generateHairSalonRef(),
+    url: getCanonicalUrl("/team"),
+  }));
 }
 
 /**

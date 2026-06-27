@@ -4,8 +4,6 @@
  * Dedicated page for browsing bridal hair & makeup photos
  */
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
 import Breadcrumbs from '../../components/SEO/Breadcrumbs.astro';
 import StructuredData from '../../components/SEO/StructuredData.astro';
 import { Image } from 'astro:assets';
@@ -62,7 +60,6 @@ const imageGallerySchema = {
         { name: "Gallery", url: `${BUSINESS_INFO.website}/services/bridal-gallery` },
     ]} />
 
-    <Header />
 
     <div class="gallery-page">
         <div class="gallery-container">
@@ -110,7 +107,6 @@ const imageGallerySchema = {
         </div>
     </div>
 
-    <Footer />
 </Layout>
 
 <style>

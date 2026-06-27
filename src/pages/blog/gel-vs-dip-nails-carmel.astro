@@ -4,20 +4,12 @@
  * Single Responsibility: Display gel vs. dip nails comparison content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'gel-vs-dip-nails-carmel')!;
+const post = getBlogPost('gel-vs-dip-nails-carmel');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>One of the most common questions we hear at Glow Salon &amp; Spa is "should I get gel or dip?" It is a fair question — both services look great, last longer than a classic manicure, and come with their own trade-offs. Emily, our nail technician here in Carmel, Indiana, walks clients through the differences every week. Here is her straightforward breakdown so you can walk in knowing exactly what to ask for.</p>
 
     <h2>What Are Gel Nails?</h2>

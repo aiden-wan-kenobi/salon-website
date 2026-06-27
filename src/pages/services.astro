@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SalonServices from '../components/salon-services/SalonServices.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/SEO/Breadcrumbs.astro';
 import StructuredData from '../components/SEO/StructuredData.astro';
 import { generateServiceListSchema } from '../utils/structuredData';
@@ -17,7 +15,5 @@ const serviceListSchema = generateServiceListSchema();
     { name: "Home", url: BUSINESS_INFO.website },
     { name: "Services", url: `${BUSINESS_INFO.website}/services` },
   ]} />
-  <Header />
   <SalonServices />
-  <Footer />
 </Layout>

@@ -5,10 +5,10 @@
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
 import FAQSection from '../../components/FAQSection.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 import type { FAQItem } from '../../utils/structuredData';
 
-const post = blogPosts.find(p => p.slug === 'low-maintenance-hair-color-carmel')!;
+const post = getBlogPost('low-maintenance-hair-color-carmel');
 
 const lowMaintenanceFAQs: FAQItem[] = [
     {
@@ -30,16 +30,7 @@ const lowMaintenanceFAQs: FAQItem[] = [
 ];
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    modifiedDate={post.modifiedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <aside class="answer-box" aria-label="Quick answer">
         <h2>Quick Answer</h2>
         <p>

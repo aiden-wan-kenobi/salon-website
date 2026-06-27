@@ -13,7 +13,12 @@ import { BUSINESS_INFO } from '../config/constants';
             <span class="logo-text">Glow <em>Salon</em> &amp; Spa</span>
         </a>
 
-        <Nav role="navigation" aria-label="Main navigation" />
+        <Nav />
+
+        <details class="mobile-menu">
+            <summary>Menu</summary>
+            <Nav variant="mobile" />
+        </details>
 
         <a
             href={BUSINESS_INFO.bookingUrl}
@@ -85,6 +90,34 @@ import { BUSINESS_INFO } from '../config/constants';
         background: var(--rose);
     }
 
+    .mobile-menu {
+        position: relative;
+        display: none;
+    }
+
+    .mobile-menu summary {
+        font-family: 'Jost', sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--deep);
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .mobile-menu summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .mobile-menu summary::after {
+        content: " +";
+        color: var(--rose);
+    }
+
+    .mobile-menu[open] summary::after {
+        content: " −";
+    }
+
     /* Mobile responsive */
     @media (max-width: 768px) {
         .header-content {
@@ -98,6 +131,21 @@ import { BUSINESS_INFO } from '../config/constants';
         .header-book-btn {
             padding: 0.55rem 1rem;
             font-size: 0.68rem;
+        }
+    }
+
+    @media (max-width: 500px) {
+        header {
+            padding: 0 1rem;
+        }
+
+        .mobile-menu {
+            display: block;
+            margin-left: auto;
+        }
+
+        .header-book-btn {
+            margin-left: 1rem;
         }
     }
 </style>

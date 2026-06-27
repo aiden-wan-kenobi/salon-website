@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Astro 7 compatibility verification
+- Per-route sitemap modification dates
+- Native mobile navigation
 - Comprehensive documentation suite
 - Development guide with architecture overview
 - Deployment guide with multiple hosting options
@@ -16,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation index and quick reference
 
 ### Changed
+- Centralized header/footer rendering in the root layout
+- Centralized team images and structured-data metadata
+- Simplified blog post metadata composition
+- Removed unused framework integrations, source files, and image assets
 - Updated main README.md with project-specific information
 - Replaced generic Astro starter documentation
 - Enhanced project structure documentation
@@ -144,4 +151,4 @@ docs/
 For questions about this changelog or documentation:
 - **Development Team**: development@glowsalonwestclay.com
 - **Business Inquiries**: info@glowsalonwestclay.com
-- **Emergency Support**: (317) 846-3073 
+- **Emergency Support**: (317) 846-3073

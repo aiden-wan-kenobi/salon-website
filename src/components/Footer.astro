@@ -6,6 +6,8 @@
 import { BUSINESS_INFO } from '../config/constants';
 import { NAVIGATION_LINKS } from '../config/constants';
 import SocialIcons from './SocialIcons.astro';
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer" role="contentinfo">
@@ -55,7 +57,7 @@ import SocialIcons from './SocialIcons.astro';
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-bottom-text">© 2026 Glow Salon & Spa · Carmel, Indiana</span>
+    <span class="footer-bottom-text">© {currentYear} Glow Salon & Spa · Carmel, Indiana</span>
     <span class="footer-bottom-text">Powered by GlossGenius</span>
   </div>
 </footer>

@@ -3,8 +3,6 @@
  * BlogPostLayout component
  * Single Responsibility: Provide consistent layout for blog posts with SEO metadata
  */
-import Header from '../Header.astro';
-import Footer from '../Footer.astro';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../SEO/Breadcrumbs.astro';
 import { BUSINESS_INFO } from '../../config/constants';
@@ -39,7 +37,6 @@ const { title, description, publishedDate, modifiedDate, author, category, tags,
         { name: title, url: Astro.url.href },
     ]} />
 
-    <Header />
 
     <div class="blog-post-page">
         <article class="blog-post-container">
@@ -61,13 +58,12 @@ const { title, description, publishedDate, modifiedDate, author, category, tags,
                 <div class="blog-cta">
                     <h3>Ready to Book Your Appointment?</h3>
                     <p>Visit Glow Salon & Spa in Carmel, IN or call us at <a href={`tel:${BUSINESS_INFO.phone.replace(/-/g, '')}`}>{BUSINESS_INFO.phoneFormatted}</a> to schedule.</p>
-                    <a href={BUSINESS_INFO.bookingUrl} target="_blank" class="blog-book-btn">Book Now</a>
+                    <a href={BUSINESS_INFO.bookingUrl} target="_blank" rel="noopener noreferrer" class="blog-book-btn">Book Now</a>
                 </div>
                 <a href="/blog/" class="back-to-blog">&larr; Back to Blog</a>
             </footer>
         </article>
     </div>
-    <Footer />
 </Layout>
 
 <style>

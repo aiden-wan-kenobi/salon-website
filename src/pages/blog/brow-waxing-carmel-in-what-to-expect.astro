@@ -4,20 +4,12 @@
  * Single Responsibility: Answer first-appointment questions and support local waxing search
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'brow-waxing-carmel-in-what-to-expect')!;
+const post = getBlogPost('brow-waxing-carmel-in-what-to-expect');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>A professional brow wax should make your brows look cleaner and more balanced while still looking like you. If you are searching for brow waxing in Carmel, Indiana, or wondering what happens at a first eyebrow wax, a little preparation can help you feel comfortable and get a result that fits your face.</p>
 
     <p>Glow Salon &amp; Spa offers brow waxing and lip waxing in the Village of West Clay. This guide covers how to prepare, what to discuss before the service, how to care for the area afterward, and when to schedule a wax before a wedding, vacation, photo session, or other event.</p>

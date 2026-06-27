@@ -4,20 +4,12 @@
  * Single Responsibility: Display hair color care content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'how-to-keep-hair-color-lasting-longer')!;
+const post = getBlogPost('how-to-keep-hair-color-lasting-longer');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>Whether you just got highlights, an all-over color, or a glaze, you want that fresh-from-the-salon look to last as long as possible. The good news is that a few simple habits can make a real difference. Here is what our stylists at Glow Salon & Spa actually recommend to clients after every color appointment.</p>
 
     <h2>Wait Before You Wash</h2>

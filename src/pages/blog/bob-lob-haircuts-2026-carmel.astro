@@ -4,20 +4,12 @@
  * Single Responsibility: Display bob/lob haircut trend content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'bob-lob-haircuts-2026-carmel')!;
+const post = getBlogPost('bob-lob-haircuts-2026-carmel');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>If there is one haircut dominating salon chairs this spring, it is the bob. Whether you call it a bob, a lob, or something in between, shorter lengths are the most-requested style our Carmel stylists are seeing right now. The appeal is simple: bobs are versatile, flattering on nearly every face shape, and they look polished with minimal daily effort. Here is what you should know before booking your chop.</p>
 
     <h2>Why the Bob Is Having a Major Moment in 2026</h2>

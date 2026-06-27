@@ -4,20 +4,12 @@
  * Single Responsibility: Display spring hair color trends content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'spring-2026-hair-color-trends-indianapolis')!;
+const post = getBlogPost('spring-2026-hair-color-trends-indianapolis');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>Every spring brings a shift in color, and 2026 is no exception. Clients across Carmel, Westfield, and Fishers are walking in with fresh inspiration — and the requests this season are all about warmth. Cool, icy tones are taking a back seat to richer, sun-kissed shades that look natural and feel effortless. Here are the four color trends our stylists at Glow Salon &amp; Spa are booking the most right now.</p>
 
     <h2>Butter Blonde</h2>

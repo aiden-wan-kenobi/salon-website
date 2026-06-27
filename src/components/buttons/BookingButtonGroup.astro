@@ -8,7 +8,7 @@ import { BUSINESS_INFO } from '../../config/constants';
 
 <div class="booking-button-group">
   <a href={`tel:+1${BUSINESS_INFO.phone.replace(/-/g, '')}`} class="booking-button">Call to Book</a>
-  <a href={BUSINESS_INFO.bookingUrl} target="_blank" class="booking-button">Book Online</a>
+  <a href={BUSINESS_INFO.bookingUrl} target="_blank" rel="noopener noreferrer" class="booking-button">Book Online</a>
   <a href="/contact/" class="booking-button">Contact Us</a>
 </div>
 
@@ -24,6 +24,7 @@ import { BUSINESS_INFO } from '../../config/constants';
     .booking-button {
         display: block;
         width: 100%;
+        box-sizing: border-box;
         padding: 0.8rem 1.5rem;
         background: transparent;
         color: var(--deep);

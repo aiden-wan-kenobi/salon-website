@@ -4,20 +4,12 @@
  * Single Responsibility: Display spa services guide content targeting local search
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'best-spa-services-carmel-indiana')!;
+const post = getBlogPost('best-spa-services-carmel-indiana');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>If you are searching for a spa in Carmel, Indiana, you have more options than a traditional day spa. A full-service salon and spa like Glow Salon &amp; Spa offers everything from nail services and waxing to hair color and makeup — all in one appointment, without needing to visit multiple locations. Here is what to know before you book.</p>
 
     <h2>What Spa Services Are Available in Carmel, Indiana?</h2>
