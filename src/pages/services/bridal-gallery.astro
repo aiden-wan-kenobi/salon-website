@@ -9,6 +9,16 @@ import StructuredData from '../../components/SEO/StructuredData.astro';
 import { Image } from 'astro:assets';
 import { BUSINESS_INFO } from '../../config/constants';
 
+import brideTiaraPortrait from '../../assets/bridal/bride-updo-tiara-portrait.webp';
+import bridesmaidLowUpdo from '../../assets/bridal/bridesmaid-low-updo.webp';
+import brideTiaraGlamour from '../../assets/bridal/bride-updo-tiara-glamour.webp';
+import brunetteLowPonytail from '../../assets/bridal/brunette-low-ponytail-big-curls.webp';
+import brunetteTexturedUpdo from '../../assets/bridal/brunette-textured-updo.webp';
+import blondeCasualUpdo from '../../assets/bridal/blonde-casual-updo.webp';
+import brunetteMessyBun from '../../assets/bridal/brunette-messy-bun.webp';
+import brunetteHalfUpFormal from '../../assets/bridal/brunette-halfup-braided-formal.webp';
+import brunetteBraidedUpdo from '../../assets/bridal/brunette-braided-updo.webp';
+import brunetteLowBraidedBun from '../../assets/bridal/brunette-low-bun-braided.webp';
 import img1 from '../../assets/bridal/20250709_215524_272BE9.webp';
 import img2 from '../../assets/bridal/IMG_0951_18rs.webp';
 import img3 from '../../assets/bridal/IMG_1747rs.webp';
@@ -22,9 +32,19 @@ import img10 from '../../assets/bridal/bridal-braided-soft-curls.webp';
 import img11 from '../../assets/bridal/bridal-half-up-highlighted-curls.webp';
 
 const title = "Bridal Gallery – Wedding Hair & Makeup Photos | Glow Salon & Spa";
-const description = "Browse our bridal hair and makeup gallery. See real brides styled by Glow Salon & Spa in Carmel, Indiana for wedding day inspiration.";
+const description = "Browse real bridal updos, half-up styles, soft waves, and wedding makeup by Glow Salon & Spa in Carmel, Indiana.";
 
 const galleryImages = [
+    { src: brideTiaraPortrait, alt: "Bride with tiara, elegant updo, and soft-glam wedding makeup by Glow Salon & Spa in Carmel, Indiana" },
+    { src: bridesmaidLowUpdo, alt: "Polished bridesmaid low updo with dimensional highlights and face-framing curls" },
+    { src: brideTiaraGlamour, alt: "Soft-glam bridal makeup and tiara updo for an Indiana wedding" },
+    { src: brunetteLowPonytail, alt: "Sleek brunette bridal ponytail with voluminous curls by Glow Salon & Spa" },
+    { src: brunetteTexturedUpdo, alt: "Textured brunette wedding updo with soft face-framing pieces" },
+    { src: blondeCasualUpdo, alt: "Soft blonde low bun styled for a wedding by Glow Salon & Spa" },
+    { src: brunetteMessyBun, alt: "Voluminous brunette updo with loose curls for a formal event" },
+    { src: brunetteHalfUpFormal, alt: "Formal half-up brunette hairstyle with long curls by Glow Salon & Spa" },
+    { src: brunetteBraidedUpdo, alt: "Brunette half-up wedding hairstyle with twisted detail and soft curls" },
+    { src: brunetteLowBraidedBun, alt: "Brunette half-up wedding hairstyle with braided detail and soft curls" },
     { src: img1, alt: "Bridal hair styling with elegant waves by Glow Salon & Spa in Carmel, Indiana" },
     { src: img2, alt: "Wedding day updo and bridal makeup by Glow Salon stylists" },
     { src: img3, alt: "Bride getting ready with professional hair and makeup in Carmel, IN" },
@@ -86,8 +106,10 @@ const imageGallerySchema = {
                             class="gallery-card-image"
                             loading={index < 3 ? "eager" : "lazy"}
                             decoding="async"
-                            widths={[400, 600, 900]}
-                            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                            widths={index === 0 ? [600, 900, 1200] : [400, 600, 900]}
+                            sizes={index === 0
+                                ? "(max-width: 768px) 100vw, 66vw"
+                                : "(max-width: 768px) 50vw, 33vw"}
                         />
                     </div>
                 ))}
