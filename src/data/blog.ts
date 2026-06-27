@@ -17,6 +17,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "brow-waxing-carmel-in-what-to-expect",
+    title: "Brow Waxing in Carmel, IN: What to Expect",
+    description: "Planning a brow wax in Carmel, Indiana? Learn how to prepare, what to expect, aftercare tips, pricing, and when to book before an event.",
+    publishedDate: "2026-06-27",
+    author: "Glow Salon & Spa",
+    category: "Waxing",
+    tags: ["brow waxing Carmel IN", "eyebrow waxing Carmel Indiana", "brow wax near me", "lip waxing", "waxing aftercare", "Village of West Clay"],
+    readTime: "6 min read",
+  },
+  {
     slug: "dimensional-hair-color-carmel-indiana",
     title: "Dimensional Hair Color in Carmel, Indiana: Highlights, Lowlights, Gloss & Lived-In Color",
     description: "Looking for dimensional hair color in Carmel, Indiana? Our stylists explain highlights, lowlights, glosses, brunette color, blonde dimension, and how to choose the right color service.",

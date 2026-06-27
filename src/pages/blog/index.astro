@@ -36,7 +36,7 @@ const description = "Expert beauty tips, hair color inspiration, bridal guides, 
                             <div class="blog-card-meta">
                                 <span class="blog-card-category">{post.category}</span>
                                 <span class="blog-card-date">
-                                    {new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    {new Date(post.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
                                 </span>
                             </div>
                             <h2>{post.title}</h2>

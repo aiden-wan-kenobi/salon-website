@@ -46,7 +46,7 @@ const { title, description, publishedDate, modifiedDate, author, category, tags,
             <header class="blog-post-header">
                 <div class="blog-post-meta">
                     <span class="blog-category">{category}</span>
-                    <span class="blog-date">{new Date(publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span class="blog-date">{new Date(publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</span>
                     <span class="blog-read-time">{readTime}</span>
                 </div>
                 <h1>{title}</h1>
