@@ -423,7 +423,6 @@ pnpm audit fix
 ## 📚 Additional Resources
 
 - [Astro Documentation](https://docs.astro.build/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Google Analytics Help](https://support.google.com/analytics/)
 - [Google Search Console](https://search.google.com/search-console)
-- [Web Performance Best Practices](https://web.dev/performance/) 
+- [Web Performance Best Practices](https://web.dev/performance/)

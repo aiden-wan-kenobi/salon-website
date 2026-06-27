@@ -4,20 +4,12 @@
  * Single Responsibility: Display dimensional hair color SEO content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'dimensional-hair-color-carmel-indiana')!;
+const post = getBlogPost('dimensional-hair-color-carmel-indiana');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>Dimensional hair color is one of the most requested services at Glow Salon &amp; Spa because it can make hair look brighter, softer, fuller, and more polished without requiring a dramatic change. If you are searching for hair color in Carmel, Indiana, blonde highlights near me, brunette dimension, lived-in color, or a color specialist near the Village of West Clay, dimensional color is usually the category worth understanding first.</p>
 
     <p>At our Carmel salon, dimensional color can include highlights, lowlights, root touch-ups, all-over color, color glazes, balayage consultations, and gloss refreshes. The right choice depends on your natural color, previous color history, haircut, maintenance schedule, and how much contrast you want to see.</p>

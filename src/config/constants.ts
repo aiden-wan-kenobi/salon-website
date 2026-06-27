@@ -61,23 +61,13 @@ export const BUSINESS_INFO = {
   },
 };
 
-export const SERVICES = {
-  hair: {
-    name: "Hair Services",
-    description: "Professional haircuts, coloring, highlights, and treatments",
-  },
-  nails: {
-    name: "Nail Services",
-    description: "Manicures, pedicures, gel and dip treatments",
-  },
-  makeup: {
-    name: "Makeup Services",
-    description: "Professional makeup application and waxing services",
-  },
-  bridal: {
-    name: "Bridal Services",
-    description: "Professional bridal hair and makeup services",
-  },
+export const SITE_LAST_UPDATED = "2026-06-27";
+
+export const SERVICE_ROUTES = {
+  hair: "/services/hair/",
+  nails: "/services/nails/",
+  makeup: "/services/makeup/",
+  bridal: "/services/bridal/",
 } as const;
 
 export const AREAS_SERVED = [
@@ -132,9 +122,9 @@ export const AREAS_SERVED = [
 ] as const;
 
 export const NAVIGATION_LINKS = [
-  { href: "/contact", label: "Contact" },
-  { href: "/services", label: "Services" },
-  { href: "/team", label: "Our Team" },
-  { href: "/blog", label: "Blog" },
+  { href: "/contact/", label: "Contact" },
+  { href: "/services/", label: "Services" },
+  { href: "/team/", label: "Our Team" },
+  { href: "/blog/", label: "Blog" },
   { href: "https://glowsalonwestclay.glossgenius.com/shop/gift-cards", label: "Gift Cards", external: true },
 ] as const;

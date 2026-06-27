@@ -4,14 +4,7 @@
  * Single Responsibility: Display full team profiles
  */
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { teamMembers } from '../data/team';
-import jaredImage from '../assets/team/jared.webp';
-import lauraImage from '../assets/team/laura_brock.webp';
-import juliaImage from '../assets/team/julia_zeffner.webp';
-import emilyImage from '../assets/team/emily_saunders.webp';
-import hannahImage from '../assets/team/hannah_d.webp';
 import { Image } from 'astro:assets';
 import Breadcrumbs from '../components/SEO/Breadcrumbs.astro';
 import { BUSINESS_INFO } from '../config/constants';
@@ -19,13 +12,6 @@ import { BUSINESS_INFO } from '../config/constants';
 const title = "Carmel Hair Stylists & Beauty Team | Glow Salon & Spa";
 const description = "Meet the Carmel hair stylists, bridal specialists, and nail technicians at Glow Salon & Spa in the Village of West Clay.";
 
-const imageMap: Record<string, ImageMetadata> = {
-  jared: jaredImage,
-  laura: lauraImage,
-  julia: juliaImage,
-  emily: emilyImage,
-  hannah: hannahImage,
-};
 ---
 
 <Layout title={title} description={description}>
@@ -33,8 +19,6 @@ const imageMap: Record<string, ImageMetadata> = {
     { name: "Home", url: BUSINESS_INFO.website },
     { name: "Our Team", url: `${BUSINESS_INFO.website}/team` },
   ]} />
-  <Header />
-
     <section class="team-page">
       <div class="team-inner">
 
@@ -50,12 +34,11 @@ const imageMap: Record<string, ImageMetadata> = {
 
         <div class="team-grid">
           {teamMembers.map((member) => {
-            const imageSrc = imageMap[member.image] || hannahImage;
             return (
               <div class="member-card">
                 <div class="member-image-wrap">
                   <Image
-                    src={imageSrc}
+                    src={member.image}
                     alt={`${member.name} - ${member.role} at Glow Salon & Spa`}
                     width={500}
                     loading="lazy"
@@ -96,7 +79,6 @@ const imageMap: Record<string, ImageMetadata> = {
       </div>
     </section>
 
-  <Footer />
 </Layout>
 
 <style>

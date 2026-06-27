@@ -4,8 +4,6 @@
  * Single Responsibility: Display all blog posts with cards
  */
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
 import Breadcrumbs from '../../components/SEO/Breadcrumbs.astro';
 import { BUSINESS_INFO } from '../../config/constants';
 import { blogPosts } from '../../data/blog';
@@ -20,7 +18,6 @@ const description = "Expert beauty tips, hair color inspiration, bridal guides, 
         { name: "Blog", url: Astro.url.href },
     ]} />
 
-    <Header />
 
     <div class="blog-page">
         <div class="blog-container">
@@ -31,7 +28,7 @@ const description = "Expert beauty tips, hair color inspiration, bridal guides, 
 
             <div class="blog-grid">
                 {blogPosts.map((post) => (
-                    <a href={`/blog/${post.slug}`} class="blog-card">
+                    <a href={`/blog/${post.slug}/`} class="blog-card">
                         <div class="blog-card-content">
                             <div class="blog-card-meta">
                                 <span class="blog-card-category">{post.category}</span>
@@ -51,7 +48,6 @@ const description = "Expert beauty tips, hair color inspiration, bridal guides, 
             </div>
         </div>
     </div>
-    <Footer />
 </Layout>
 
 <style>

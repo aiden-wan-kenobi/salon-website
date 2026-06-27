@@ -3,11 +3,9 @@
  * ServicePage component
  * Single Responsibility: Display a service page with pricing and booking options
  */
-import Header from '../Header.astro';
 import PricingSection from '../service-pricing/PricingSection.astro';
 import Layout from '../../layouts/Layout.astro';
 import BookButtonGroup from '../buttons/BookingButtonGroup.astro';
-import Footer from '../Footer.astro';
 import StructuredData from '../SEO/StructuredData.astro';
 import Breadcrumbs from '../SEO/Breadcrumbs.astro';
 import FAQSection from '../FAQSection.astro';
@@ -43,7 +41,6 @@ const serviceStructuredData = generateServiceSchema(pageTitle, description, serv
         { name: pageTitle, url: Astro.url.href },
     ]} />
 
-    <Header />
     
     <div class="service-page">
         <div class="service-container">
@@ -83,5 +80,4 @@ const serviceStructuredData = generateServiceSchema(pageTitle, description, serv
             </div>
         </div>
     </div>
-    <Footer />
 </Layout>

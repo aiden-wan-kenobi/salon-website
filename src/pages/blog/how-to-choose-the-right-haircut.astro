@@ -4,20 +4,12 @@
  * Single Responsibility: Display haircut guide content
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'how-to-choose-the-right-haircut')!;
+const post = getBlogPost('how-to-choose-the-right-haircut');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>Walking into a salon and saying "I want something different" is exciting — but it can also feel overwhelming when you are not sure what will actually work. The truth is, a great haircut is not just about what looks good on a screen. It is about what works with your specific face shape, hair texture, and the amount of time you realistically spend styling in the morning.</p>
 
     <p>Here is how our stylists at Glow Salon & Spa help clients figure out the right cut.</p>

@@ -4,12 +4,9 @@
  * Single Responsibility: Display a helpful not-found page with navigation links
  */
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Page Not Found | Glow Salon & Spa" description="The page you're looking for doesn't exist. Visit Glow Salon & Spa in Carmel, Indiana for hair, nail, waxing, and bridal services.">
-  <Header />
   <section class="not-found">
     <h1 class="not-found-title">Page Not Found</h1>
     <p class="not-found-text">
@@ -22,7 +19,6 @@ import Footer from '../components/Footer.astro';
       <a href="/blog/" class="not-found-link">Blog</a>
     </div>
   </section>
-  <Footer />
 </Layout>
 
 <style>

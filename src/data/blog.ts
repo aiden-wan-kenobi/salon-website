@@ -138,3 +138,13 @@ export const blogPosts: BlogPost[] = [
     readTime: "4 min read",
   }
 ];
+
+export function getBlogPost(slug: string): BlogPost {
+  const post = blogPosts.find((candidate) => candidate.slug === slug);
+
+  if (!post) {
+    throw new Error(`Missing blog metadata for "${slug}"`);
+  }
+
+  return post;
+}

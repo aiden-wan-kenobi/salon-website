@@ -7,6 +7,7 @@ import hairServiceImage from '../../assets/services/hair.webp';
 import nailServiceImage from '../../assets/services/nails.webp';
 import makeupServiceImage from '../../assets/services/IMG_3704rs.webp';
 import bridalServiceImage from '../../assets/bridal/IMG_3583.webp';
+import { SERVICE_ROUTES } from '../../config/constants';
 import { Image } from 'astro:assets';
 
 const standardServices = [
@@ -14,21 +15,21 @@ const standardServices = [
     image: hairServiceImage,
     name: 'Hair',
     descriptor: 'Color, cuts, balayage & extensions',
-    href: '/services/hair/',
+    href: SERVICE_ROUTES.hair,
     alt: 'Haircuts, color, and balayage at Glow Salon & Spa in Carmel, Indiana',
   },
   {
     image: nailServiceImage,
     name: 'Nails',
     descriptor: 'Manicures, pedicures & gel polish',
-    href: '/services/nails/',
+    href: SERVICE_ROUTES.nails,
     alt: 'Manicures and pedicures at Glow Salon & Spa in Carmel, Indiana',
   },
   {
     image: makeupServiceImage,
     name: 'Waxing & Glam',
     descriptor: 'Professional waxing & makeup artistry',
-    href: '/services/makeup/',
+    href: SERVICE_ROUTES.makeup,
     alt: 'Waxing and makeup services at Glow Salon & Spa in Carmel, Indiana',
   },
 ];
@@ -45,7 +46,7 @@ const standardServices = [
     <div class="services-grid">
 
       <!-- Bridal featured card -->
-      <a href="/services/bridal/" class="bridal-card">
+      <a href={SERVICE_ROUTES.bridal} class="bridal-card">
         <div class="bridal-card-image">
           <Image
             src={bridalServiceImage}

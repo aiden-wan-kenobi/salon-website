@@ -4,20 +4,12 @@
  * Single Responsibility: Display hair repair guide content targeting local search
  */
 import BlogPostLayout from '../../components/blog/BlogPostLayout.astro';
-import { blogPosts } from '../../data/blog';
+import { getBlogPost } from '../../data/blog';
 
-const post = blogPosts.find(p => p.slug === 'spring-hair-repair-tips-carmel-indiana')!;
+const post = getBlogPost('spring-hair-repair-tips-carmel-indiana');
 ---
 
-<BlogPostLayout
-    title={post.title}
-    description={post.description}
-    publishedDate={post.publishedDate}
-    author={post.author}
-    category={post.category}
-    tags={post.tags}
-    readTime={post.readTime}
->
+<BlogPostLayout {...post}>
     <p>By the time March rolls around in Indiana, your hair has been through a lot. Months of dry indoor heat, cold wind, static, and hat friction can leave even healthy hair feeling dull, brittle, and harder to manage. If your ends are splitting, your color looks flat, or your hair just feels off, you are not imagining it — winter takes a real toll.</p>
 
     <p>The good news is that most winter hair damage is reversible with the right approach. Here is what our stylists at Glow Salon &amp; Spa recommend to get your hair back on track heading into spring.</p>

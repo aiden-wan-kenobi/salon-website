@@ -3,10 +3,8 @@
  * BridalServicePage component
  * Single Responsibility: Display bridal service page with enhanced SEO and pricing
  */
-import Header from '../Header.astro';
 import PricingSection from '../service-pricing/PricingSection.astro';
 import Layout from '../../layouts/Layout.astro';
-import Footer from '../Footer.astro';
 import StructuredData from '../SEO/StructuredData.astro';
 import Breadcrumbs from '../SEO/Breadcrumbs.astro';
 import SectionHeader from '../SectionHeader.astro';
@@ -93,7 +91,6 @@ const bridalPackages = [
         { name: pageTitle, url: Astro.url.href },
     ]} />
 
-    <Header />
     
     <div class="service-page">
         <div class="service-container">
@@ -201,7 +198,6 @@ const bridalPackages = [
             </div>
         </div>
     </div>
-    <Footer />
 </Layout>
 
 <style>
@@ -381,4 +377,4 @@ const bridalPackages = [
             gap: 20px;
         }
     }
-</style> 
+</style>

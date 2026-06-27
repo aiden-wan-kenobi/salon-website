@@ -1,302 +1,73 @@
 # Development Guide
 
-This document provides detailed information for developers working on the Glow Salon & Spa website.
+## Architecture
 
-## 🏗️ Architecture Overview
+The site is a static Astro 7 project written in strict TypeScript. Pages compose server-rendered `.astro` components and component-scoped CSS; there are no hydrated UI-framework components.
 
-The website is built using **Astro** as the main framework, with **React** components for interactive elements and **Tailwind CSS** for styling. The architecture follows a component-based approach with clear separation of concerns.
+The root `Layout.astro` owns the document metadata, header, main landmark, and footer. Route pages should focus on page-specific content and data composition.
 
-### Key Technologies
+Shared data boundaries:
 
-- **Astro 5.10.0** - Static site generator
-- **React 19.0.0** - Interactive components
-- **Tailwind CSS 4.0.12** - Utility-first CSS framework
-- **TypeScript** - Type safety
-- **Nodemailer** - Email functionality
-- **Resend** - Email delivery service
+- `src/config/constants.ts` — business details, navigation, and the site edit date
+- `src/data/blog.ts` — blog metadata and safe post lookup
+- `src/data/team.ts` — team display and structured-data metadata
+- `src/data/faqs.ts` — service FAQ content
+- `src/data/reviews.ts` — review content
 
-## 📁 File Structure Deep Dive
+## Local development
 
-```
-src/
-├── assets/                 # Static assets (images, fonts, etc.)
-├── components/            # Reusable UI components
-│   ├── buttons/          # Button components
-│   │   ├── BookingButtonGroup.astro
-│   │   └── HomeButton.astro
-│   ├── service-pricing/  # Service pricing components
-│   │   └── PricingSection.astro
-│   ├── Card.astro        # Generic card component
-│   ├── ContactForm.astro # Contact form component
-│   ├── Footer.astro      # Site footer
-│   ├── Header.astro      # Site header/navigation
-│   ├── LandingSection.astro # Hero section
-│   └── SalonServices.astro # Services showcase
-├── layouts/              # Page layouts
-│   └── Layout.astro     # Main layout component
-├── pages/               # Astro pages (routes)
-│   ├── services/        # Service-specific pages
-│   ├── contact.astro    # Contact page
-│   ├── index.astro      # Homepage
-│   └── services.astro   # Services page
-├── styles/              # Global styles
-└── utils/               # Utility functions
-```
+Requirements:
 
-## 🎨 Component Architecture
-
-### Layout Components
-
-#### `Layout.astro`
-The main layout wrapper that provides:
-- HTML structure
-- Meta tags
-- SEO optimization
-- Global styles
-
-#### `Header.astro`
-Site navigation component with:
-- Logo/branding
-- Navigation menu
-- Mobile responsiveness
-- Contact information
-
-#### `Footer.astro`
-Site footer with:
-- Contact information
-- Social media links
-- Business hours
-- Copyright information
-
-### Page Components
-
-#### `LandingSection.astro`
-Hero section featuring:
-- Background image
-- Call-to-action button
-- Responsive design
-- Phone booking integration
-
-#### `SalonServices.astro`
-Services showcase with:
-- Service categories
-- Pricing information
-- Booking buttons
-- Visual appeal
-
-### Interactive Components
-
-#### `ContactForm.astro`
-Contact form with:
-- Form validation
-- Email integration
-- Success/error handling
-- Responsive design
-
-#### `BookingButtonGroup.astro`
-Booking buttons with:
-- Phone call integration
-- Consistent styling
-- Multiple placement options
-
-## 🎯 Development Workflow
-
-### 1. Setting Up Development Environment
+- Node.js 24 LTS (see `.nvmrc`)
+- pnpm 10
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd glow-salon
-
-# Install dependencies
 pnpm install
-
-# Start development server
-pnpm run dev
+pnpm dev
 ```
 
-### 2. Making Changes
+Before submitting changes:
 
-#### Adding New Pages
-1. Create a new `.astro` file in `src/pages/`
-2. Import the `Layout` component
-3. Add your content
-4. Update navigation if needed
-
-#### Creating New Components
-1. Create a new `.astro` file in `src/components/`
-2. Use scoped styles for component-specific CSS
-3. Export the component
-4. Import and use in pages
-
-#### Modifying Services
-1. Edit the service arrays in `src/pages/services.astro`
-2. Update pricing information
-3. Add new service categories if needed
-
-### 3. Styling Guidelines
-
-#### Tailwind CSS Usage
-- Use Tailwind utility classes for styling
-- Follow mobile-first responsive design
-- Maintain consistent spacing and typography
-
-#### Custom CSS
-- Use Astro's scoped styles for component-specific CSS
-- Keep global styles minimal
-- Follow BEM methodology for custom classes
-
-### 4. Testing
-
-#### Manual Testing Checklist
-- [ ] Homepage loads correctly
-- [ ] Services page displays all services
-- [ ] Contact form works
-- [ ] Phone links function
-- [ ] Responsive design on all devices
-- [ ] Images load properly
-- [ ] Navigation works correctly
-
-#### Browser Testing
-Test on:
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## 🔧 Configuration Files
-
-### `astro.config.mjs`
-```javascript
-export default defineConfig({
-  site: "https://www.glowsalonwestclay.com/",
-  base: "/",
-  output: "static",
-  integrations: [
-    sitemap(), 
-    tailwindcss(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      }
-    })
-  ],
-});
+```bash
+pnpm lint
+pnpm build
 ```
 
-### `package.json` Scripts
-- `dev` - Start development server
-- `build` - Build for production
-- `preview` - Preview production build
-- `astro` - Run Astro CLI commands
+## Adding content
 
-## 📱 Responsive Design
+### Pages
 
-### Breakpoints
-- **Mobile**: Up to 768px
-- **Tablet**: 768px - 1024px
-- **Desktop**: 1024px+
+Create route files in `src/pages/` and wrap content in `Layout.astro`. Do not add `Header` or `Footer` directly; the root layout supplies them.
 
-### Responsive Components
-All components are designed to be responsive:
-- Flexible layouts using CSS Grid and Flexbox
-- Mobile-first approach
-- Touch-friendly interactions
-- Optimized images for different screen sizes
+Each indexable page needs a unique title, description, one `<h1>`, and logical heading order. Add breadcrumbs and page-specific structured data where useful.
 
-## 🚀 Performance Optimization
+### Blog posts
 
-### Image Optimization
-- Use WebP format for images
-- Implement lazy loading
-- Optimize image sizes for different devices
-- Use appropriate `alt` tags for accessibility
+1. Add the post metadata to `src/data/blog.ts`.
+2. Create the matching route in `src/pages/blog/`.
+3. Read metadata with `getBlogPost(slug)`.
+4. Pass it to the shared layout with `<BlogPostLayout {...post}>`.
+5. Set `modifiedDate` when meaningfully revising an existing article.
 
-### Code Optimization
-- Minimize JavaScript bundles
-- Use Astro's static generation
-- Optimize CSS with Tailwind's purge
-- Implement proper caching strategies
+### Site-wide updates
 
-## 🔍 SEO Best Practices
+Update `SITE_LAST_UPDATED` in `src/config/constants.ts` after a meaningful change to shared or non-blog content. This value feeds sitemap `lastmod` entries.
 
-### Meta Tags
-Each page includes:
-- Title tag
-- Meta description
-- Open Graph tags
-- Twitter Card tags
+### Components and styling
 
-### Structured Data
-- Implement schema markup for business information
-- Add local business schema
-- Include service schema where appropriate
+- Prefer pure `.astro` components with typed props.
+- Keep route orchestration in pages and shared presentation in components.
+- Use the existing component-scoped CSS and variables from `Layout.astro`.
+- Avoid client hydration unless interaction cannot be handled with semantic HTML.
+- Import content images from `src/assets/` so Astro can optimize them.
 
-### Sitemap
-- Automatically generated by Astro
-- Includes all pages
-- Updated on each build
+## Contact form
 
-## 📧 Email Integration
+The contact form posts directly to Formspree. Its form ID lives in `BUSINESS_INFO`; no local email service or server endpoint is used.
 
-### Contact Form Setup
-1. Configure email service in `.env`
-2. Set up Nodemailer or Resend
-3. Test email delivery
-4. Implement error handling
+## Astro 7 notes
 
-### Environment Variables
-```env
-EMAIL_SERVICE=your-email-service
-EMAIL_USER=your-email@example.com
-EMAIL_PASS=your-email-password
-```
-
-## 🐛 Debugging
-
-### Common Issues
-
-#### Build Errors
-- Check for missing dependencies
-- Verify TypeScript types
-- Ensure all imports are correct
-
-#### Styling Issues
-- Check Tailwind CSS configuration
-- Verify responsive breakpoints
-- Test on different browsers
-
-#### Email Issues
-- Verify environment variables
-- Check email service configuration
-- Test with different email providers
-
-### Debug Tools
-- Browser developer tools
-- Astro dev tools
-- TypeScript compiler
-- ESLint for code quality
-
-## 📚 Additional Resources
-
-- [Astro Documentation](https://docs.astro.build/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [React Documentation](https://reactjs.org/docs/)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-
-## 🤝 Contributing Guidelines
-
-1. Follow the existing code style
-2. Test changes on multiple devices
-3. Update documentation when needed
-4. Use descriptive commit messages
-5. Create feature branches for new work
-
-## 📞 Support
-
-For development questions or issues:
-- Check the documentation
-- Review existing code examples
-- Contact the development team
-- Create an issue in the repository 
+- The Rust compiler requires valid, fully closed markup.
+- Astro 7 uses JSX-style whitespace compression, so intentional spaces between adjacent inline elements must be explicit.
+- `src/fetch.ts` is reserved for advanced routing.
+- The project uses no Markdown plugins, container renderers, experimental flags, or custom Vite plugins.

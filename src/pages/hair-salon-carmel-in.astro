@@ -1,7 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import Breadcrumbs from '../components/SEO/Breadcrumbs.astro';
 import StructuredData from '../components/SEO/StructuredData.astro';
 import FAQSection from '../components/FAQSection.astro';
@@ -59,7 +57,6 @@ const localReviewHighlights = reviews.filter((review) =>
     { name: "Home", url: BUSINESS_INFO.website },
     { name: "Hair Salon Carmel IN", url: `${BUSINESS_INFO.website}/hair-salon-carmel-in` },
   ]} />
-  <Header />
 
   <section class="local-hero">
     <div class="local-hero-content">
@@ -217,7 +214,6 @@ const localReviewHighlights = reviews.filter((review) =>
     </div>
   </section>
 
-  <Footer />
 </Layout>
 
 <style>
