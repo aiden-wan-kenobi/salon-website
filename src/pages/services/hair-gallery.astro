@@ -9,6 +9,9 @@ import StructuredData from '../../components/SEO/StructuredData.astro';
 import { Image } from 'astro:assets';
 import { BUSINESS_INFO } from '../../config/constants';
 
+import blondeBalayageWaves from '../../assets/hair/blonde-balayage-wavy-long-2.webp';
+import darkBrunetteWaves from '../../assets/hair/dark-brunette-long-waves-2.webp';
+import darkBrunetteLongWaves from '../../assets/hair/dark-brunette-long-waves.webp';
 import img1 from '../../assets/hair/IMG_5164.jpeg';
 import img2 from '../../assets/hair/IMG_5380.jpeg';
 import img3 from '../../assets/hair/IMG_2558.png';
@@ -19,9 +22,12 @@ import img7 from '../../assets/hair/IMG_2130.jpeg';
 import img8 from '../../assets/hair/IMG_3721.jpeg';
 
 const title = "Hair Gallery – Cuts, Color & Styling Photos | Glow Salon & Spa";
-const description = "Browse our hair gallery featuring haircuts, balayage, highlights, and styling by Glow Salon & Spa in Carmel, Indiana.";
+const description = "Browse haircuts, balayage, dimensional color, highlights, and long-wave styling by Glow Salon & Spa in Carmel, Indiana.";
 
 const galleryImages = [
+    { src: blondeBalayageWaves, alt: "Dimensional blonde balayage with long waves by Glow Salon & Spa in Carmel, Indiana" },
+    { src: darkBrunetteWaves, alt: "Long dark brunette layers styled in soft waves at Glow Salon & Spa" },
+    { src: darkBrunetteLongWaves, alt: "Glossy dark brunette hair with long, polished waves by a Carmel hairstylist" },
     { src: img1, alt: "Professional haircut and styling by Glow Salon & Spa in Carmel, Indiana" },
     { src: img2, alt: "Balayage hair color by Glow Salon stylists in Carmel, IN" },
     { src: img3, alt: "Hair color transformation at Glow Salon & Spa, serving Carmel, Westfield, and Fishers" },
@@ -80,8 +86,10 @@ const imageGallerySchema = {
                             class="gallery-card-image"
                             loading={index < 3 ? "eager" : "lazy"}
                             decoding="async"
-                            widths={[400, 600, 900]}
-                            sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                            widths={index === 0 ? [600, 900, 1200] : [400, 600, 900]}
+                            sizes={index === 0
+                                ? "(max-width: 768px) 100vw, 66vw"
+                                : "(max-width: 768px) 50vw, 33vw"}
                         />
                     </div>
                 ))}
