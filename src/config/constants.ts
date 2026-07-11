@@ -8,7 +8,7 @@ export const BUSINESS_INFO = {
   phone: "317-846-3073",
   phoneFormatted: "(317) 846-3073",
   email: "glowsalonwestclay@gmail.com",
-  website: "https://www.glowsalonwestclay.com",
+  website: "https://glowsalonwestclay.com",
   priceRange: "$$",
   googleMapsUrl: "https://www.google.com/maps/place/Glow+Salon+%26+Spa/@39.9245503,-86.1832597,17z",
   address: {
@@ -61,7 +61,7 @@ export const BUSINESS_INFO = {
   },
 };
 
-export const SITE_LAST_UPDATED = "2026-06-27";
+export const SITE_LAST_UPDATED = "2026-07-11";
 
 export const SERVICE_ROUTES = {
   hair: "/services/hair/",
