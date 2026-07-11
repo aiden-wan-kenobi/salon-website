@@ -1,4 +1,6 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
   "redirects": [
     {
       "source": "/products",
@@ -15,10 +17,10 @@
       "has": [
         {
           "type": "host",
-          "value": "glowsalonwestclay.com"
+          "value": "www.glowsalonwestclay.com"
         }
       ],
-      "destination": "https://www.glowsalonwestclay.com/:path*",
+      "destination": "https://glowsalonwestclay.com/:path*",
       "permanent": true
     }
   ]

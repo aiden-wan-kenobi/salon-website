@@ -63,7 +63,7 @@
 - **Name**: Glow Salon & Spa
 - **Address**: 1928 Rhettsbury St, Carmel, IN 46032
 - **Phone**: (317) 846-3073
-- **Website**: https://www.glowsalonwestclay.com
+- **Website**: https://glowsalonwestclay.com
 
 ## Content Marketing for Local SEO
 

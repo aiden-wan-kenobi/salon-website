@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 
-Sitemap: https://www.glowsalonwestclay.com/sitemap-index.xml
+Sitemap: https://glowsalonwestclay.com/sitemap-index.xml

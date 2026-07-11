@@ -15,6 +15,23 @@ export interface BreadcrumbItem {
 }
 
 /**
+ * Site identity used by Google to understand the preferred site name.
+ */
+export function generateWebsiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${BUSINESS_INFO.website}/#website`,
+    url: getCanonicalUrl("/"),
+    name: BUSINESS_INFO.name,
+    alternateName: "Glow Salon West Clay",
+    publisher: {
+      "@id": `${BUSINESS_INFO.website}/#business`,
+    },
+  };
+}
+
+/**
  * Canonical HairSalon entity — the single authoritative business block.
  * All other schemas that need a business reference should use
  * generateHairSalonRef() instead of duplicating the full entity.
@@ -31,6 +48,7 @@ export function generateHairSalonSchema() {
     "@id": `${BUSINESS_INFO.website}/#business`,
     name: BUSINESS_INFO.name,
     image: `${BUSINESS_INFO.website}/glow-salon-logo.webp`,
+    logo: `${BUSINESS_INFO.website}/glow-salon-logo.webp`,
     url: getCanonicalUrl("/"),
     telephone: `+1${BUSINESS_INFO.phone.replace(/-/g, "")}`,
     email: BUSINESS_INFO.email,

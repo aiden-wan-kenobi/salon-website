@@ -34,7 +34,7 @@ Deploy the contents of `dist/`. `public/_redirects` supplies equivalent redirect
 
 ## Post-deployment checks
 
-- Confirm the canonical host is `https://www.glowsalonwestclay.com/`.
+- Confirm the canonical host is `https://glowsalonwestclay.com/`.
 - Confirm `/products/` redirects to `/services/`.
 - Confirm `/sitemap-index.xml`, `/robots.txt`, and a representative social image return successfully.
 - Check the homepage, a service page, a blog article, the team page, and contact form on desktop and mobile.

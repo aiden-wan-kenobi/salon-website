@@ -10,6 +10,7 @@ import Footer from '../components/Footer.astro';
 import StructuredData from '../components/SEO/StructuredData.astro';
 import {
 	generateHairSalonSchema,
+	generateWebsiteSchema,
 	generatePersonSchemas,
 	generateArticleSchema,
 } from '../utils/structuredData';
@@ -50,6 +51,7 @@ const normalizedCanonicalURL = canonicalURL
 	: getCanonicalUrl(Astro.url.pathname);
 const normalizedOgImage = new URL(ogImage, BUSINESS_INFO.website).href;
 const hairSalonSchema = generateHairSalonSchema();
+const websiteSchema = generateWebsiteSchema();
 const personSchemas = generatePersonSchemas();
 
 let articleSchema: ReturnType<typeof generateArticleSchema> | null = null;
@@ -182,7 +184,7 @@ if (articlePublishedTime) {
 		<meta name="DC.subject" content="Beauty Salon, Hair Services, Nail Services, Makeup Services">
 
 		<!-- Structured Data -->
-		<StructuredData data={[hairSalonSchema, ...personSchemas, ...(articleSchema ? [articleSchema] : [])]} />
+		<StructuredData data={[websiteSchema, hairSalonSchema, ...personSchemas, ...(articleSchema ? [articleSchema] : [])]} />
 
 	</head>
 	<body>

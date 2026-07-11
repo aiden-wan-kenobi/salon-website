@@ -23,7 +23,7 @@ function toSitemapDate(date) {
 }
 
 export default defineConfig({
-  site: 'https://www.glowsalonwestclay.com/',
+  site: 'https://glowsalonwestclay.com/',
   output: 'static',
   trailingSlash: 'always',
   integrations: [
