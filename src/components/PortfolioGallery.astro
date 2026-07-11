@@ -1,0 +1,509 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface GalleryImage {
+  src: ImageMetadata;
+  alt: string;
+  title: string;
+  detail?: string;
+}
+
+export interface Props {
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  backHref: string;
+  backLabel: string;
+  images: GalleryImage[];
+  ctaText: string;
+  ctaHref: string;
+  ctaLabel: string;
+}
+
+const {
+  eyebrow,
+  heading,
+  intro,
+  backHref,
+  backLabel,
+  images,
+  ctaText,
+  ctaHref,
+  ctaLabel,
+} = Astro.props;
+
+const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall', 'wide'];
+---
+
+<section class="portfolio" aria-labelledby="portfolio-heading">
+  <div class="portfolio-intro">
+    <a href={backHref} class="back-link">
+      <span aria-hidden="true">&larr;</span>
+      {backLabel}
+    </a>
+    <p class="eyebrow">{eyebrow}</p>
+    <div class="intro-grid">
+      <h1 id="portfolio-heading">{heading}</h1>
+      <p>{intro}</p>
+    </div>
+  </div>
+
+  <div class="lookbook" aria-label={`${heading} photos`}>
+    {images.map((image, index) => (
+      <button
+        class:list={['look', layoutClasses[index % layoutClasses.length]]}
+        type="button"
+        data-gallery-item
+        data-index={index}
+        aria-label={`Open ${image.title} in full screen`}
+      >
+        <Image
+          src={image.src}
+          alt={image.alt}
+          class="look-image"
+          loading={index < 3 ? 'eager' : 'lazy'}
+          decoding="async"
+          widths={[420, 680, 960, 1280]}
+          sizes={index % layoutClasses.length === 0
+            ? '(max-width: 700px) 100vw, 66vw'
+            : '(max-width: 700px) 50vw, 34vw'}
+          quality={86}
+        />
+        <span class="look-caption">
+          <strong>{image.title}</strong>
+          {image.detail && <span>{image.detail}</span>}
+        </span>
+        <span class="expand-icon" aria-hidden="true">+</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="portfolio-cta">
+    <p>{ctaText}</p>
+    <a href={ctaHref} class="cta-link">
+      {ctaLabel}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<dialog class="lightbox" data-lightbox aria-label="Expanded gallery image">
+  <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close image viewer">&times;</button>
+  <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Previous image">&larr;</button>
+  <figure>
+    <img data-lightbox-image src="" alt="" />
+    <figcaption>
+      <strong data-lightbox-title></strong>
+      <span data-lightbox-detail></span>
+    </figcaption>
+  </figure>
+  <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Next image">&rarr;</button>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+  const items = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-gallery-item]'));
+  const lightboxImage = dialog?.querySelector<HTMLImageElement>('[data-lightbox-image]');
+  const lightboxTitle = dialog?.querySelector<HTMLElement>('[data-lightbox-title]');
+  const lightboxDetail = dialog?.querySelector<HTMLElement>('[data-lightbox-detail]');
+  let activeIndex = 0;
+
+  const showImage = (index: number) => {
+    if (!dialog || !lightboxImage || !lightboxTitle || !lightboxDetail || items.length === 0) return;
+    activeIndex = (index + items.length) % items.length;
+    const item = items[activeIndex];
+    const image = item.querySelector<HTMLImageElement>('img');
+    const title = item.querySelector<HTMLElement>('.look-caption strong');
+    const detail = item.querySelector<HTMLElement>('.look-caption span');
+    if (!image || !title) return;
+
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightboxTitle.textContent = title.textContent;
+    lightboxDetail.textContent = detail?.textContent ?? '';
+  };
+
+  items.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      showImage(index);
+      dialog?.showModal();
+      document.body.classList.add('lightbox-open');
+    });
+  });
+
+  dialog?.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => showImage(activeIndex - 1));
+  dialog?.querySelector('[data-lightbox-next]')?.addEventListener('click', () => showImage(activeIndex + 1));
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog?.addEventListener('close', () => document.body.classList.remove('lightbox-open'));
+  dialog?.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') showImage(activeIndex - 1);
+    if (event.key === 'ArrowRight') showImage(activeIndex + 1);
+  });
+</script>
+
+<style>
+  .portfolio {
+    padding: 3rem 2rem 6rem;
+    background: #fff;
+  }
+
+  .portfolio-intro,
+  .lookbook,
+  .portfolio-cta {
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+
+  .portfolio-intro {
+    padding: 1.5rem 0 3.5rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--warm-gray);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 3.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover,
+  .back-link:focus-visible {
+    color: var(--rose);
+  }
+
+  .eyebrow {
+    color: var(--rose);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 0.8rem;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: 4rem;
+    align-items: end;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 0.96;
+    font-weight: 300;
+    margin: 0;
+    max-width: 780px;
+  }
+
+  .intro-grid > p {
+    color: var(--warm-gray);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 430px;
+  }
+
+  .lookbook {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: 24px;
+    grid-auto-flow: dense;
+    gap: 12px;
+  }
+
+  .look {
+    grid-column: span 4;
+    grid-row: span 20;
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    border-radius: 2px;
+    padding: 0;
+    background: #eee8e2;
+    color: #fff;
+    cursor: zoom-in;
+    text-align: left;
+  }
+
+  .look.feature {
+    grid-column: span 8;
+    grid-row: span 34;
+  }
+
+  .look.tall {
+    grid-row: span 27;
+  }
+
+  .look.wide {
+    grid-column: span 8;
+    grid-row: span 18;
+  }
+
+  .look-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s ease;
+  }
+
+  .look::after {
+    content: '';
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(transparent, rgba(35, 24, 20, 0.72));
+    pointer-events: none;
+  }
+
+  .look:hover .look-image,
+  .look:focus-visible .look-image {
+    transform: scale(1.025);
+    filter: saturate(1.04);
+  }
+
+  .look:focus-visible {
+    outline: 3px solid var(--rose);
+    outline-offset: 3px;
+  }
+
+  .look-caption {
+    position: absolute;
+    z-index: 1;
+    left: 1.25rem;
+    right: 3rem;
+    bottom: 1.15rem;
+  }
+
+  .look-caption strong,
+  .look-caption span {
+    display: block;
+  }
+
+  .look-caption strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .look-caption span {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    opacity: 0.82;
+  }
+
+  .expand-icon {
+    position: absolute;
+    z-index: 1;
+    right: 1rem;
+    bottom: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+  }
+
+  .portfolio-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0 0;
+  }
+
+  .portfolio-cta p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--deep);
+    border-bottom: 1px solid var(--rose);
+    padding-bottom: 0.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .lightbox {
+    width: min(1120px, calc(100vw - 2rem));
+    height: min(820px, calc(100vh - 2rem));
+    border: 0;
+    padding: 0;
+    background: #1f1916;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(22, 16, 13, 0.88);
+    backdrop-filter: blur(8px);
+  }
+
+  .lightbox[open] {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr) 60px;
+    align-items: center;
+  }
+
+  .lightbox figure {
+    height: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    margin: 0;
+    padding: 1.5rem 0;
+  }
+
+  .lightbox img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+  }
+
+  .lightbox figcaption {
+    text-align: center;
+    padding: 1rem 1rem 0;
+  }
+
+  .lightbox figcaption strong,
+  .lightbox figcaption span {
+    display: block;
+  }
+
+  .lightbox figcaption strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+  }
+
+  .lightbox figcaption span {
+    color: var(--blush);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    z-index: 2;
+    top: 0.65rem;
+    right: 0.8rem;
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0.5rem;
+  }
+
+  .lightbox-nav {
+    align-self: stretch;
+    font-size: 1.4rem;
+  }
+
+  .lightbox button:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: -4px;
+  }
+
+  :global(body.lightbox-open) {
+    overflow: hidden;
+  }
+
+  @media (max-width: 800px) {
+    .portfolio {
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .portfolio-intro {
+      padding-bottom: 2.5rem;
+    }
+
+    .back-link {
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .lookbook {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 16px;
+      gap: 6px;
+    }
+
+    .look,
+    .look.tall {
+      grid-column: span 1;
+      grid-row: span 25;
+    }
+
+    .look.feature,
+    .look.wide {
+      grid-column: span 2;
+      grid-row: span 28;
+    }
+
+    .look-caption {
+      left: 0.8rem;
+      right: 1.8rem;
+      bottom: 0.75rem;
+    }
+
+    .look-caption strong {
+      font-size: 1rem;
+    }
+
+    .look-caption span {
+      display: none;
+    }
+
+    .expand-icon {
+      right: 0.6rem;
+      bottom: 0.55rem;
+      font-size: 1.1rem;
+    }
+
+    .portfolio-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .lightbox[open] {
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .look-image {
+      transition: none;
+    }
+  }
+</style>

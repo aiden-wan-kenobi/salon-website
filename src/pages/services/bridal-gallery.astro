@@ -1,12 +1,8 @@
 ---
-/**
- * Bridal Gallery Page
- * Dedicated page for browsing bridal hair & makeup photos
- */
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/SEO/Breadcrumbs.astro';
 import StructuredData from '../../components/SEO/StructuredData.astro';
-import { Image } from 'astro:assets';
+import PortfolioGallery from '../../components/PortfolioGallery.astro';
 import { BUSINESS_INFO } from '../../config/constants';
 
 import brideTiaraPortrait from '../../assets/bridal/bride-updo-tiara-portrait.webp';
@@ -33,280 +29,62 @@ import img9 from '../../assets/bridal/bridal-floral-hairpiece-curls.webp';
 import img10 from '../../assets/bridal/bridal-braided-soft-curls.webp';
 import img11 from '../../assets/bridal/bridal-half-up-highlighted-curls.webp';
 
-const title = "Bridal Gallery – Wedding Hair & Makeup Photos | Glow Salon & Spa";
-const description = "Browse real bridal updos, half-up styles, soft waves, and wedding makeup by Glow Salon & Spa in Carmel, Indiana.";
+const title = 'Bridal Lookbook – Wedding Hair & Makeup | Glow Salon & Spa';
+const description = 'Explore real bridal updos, half-up styles, soft waves, and wedding makeup by Glow Salon & Spa in Carmel, Indiana.';
 
 const galleryImages = [
-    { src: brideTiaraPortrait, alt: "Bride with tiara, elegant updo, and soft-glam wedding makeup by Glow Salon & Spa in Carmel, Indiana" },
-    { src: bridalHalfUpWavesFront, alt: "Bride with half-up soft waves and polished bridal makeup by Glow Salon & Spa in Carmel, Indiana" },
-    { src: bridalHalfUpWavesBack, alt: "Back view of half-up bridal waves styled by Glow Salon & Spa in Carmel, Indiana" },
-    { src: bridesmaidLowUpdo, alt: "Polished bridesmaid low updo with dimensional highlights and face-framing curls" },
-    { src: brideTiaraGlamour, alt: "Soft-glam bridal makeup and tiara updo for an Indiana wedding" },
-    { src: brunetteLowPonytail, alt: "Sleek brunette bridal ponytail with voluminous curls by Glow Salon & Spa" },
-    { src: brunetteTexturedUpdo, alt: "Textured brunette wedding updo with soft face-framing pieces" },
-    { src: blondeCasualUpdo, alt: "Soft blonde low bun styled for a wedding by Glow Salon & Spa" },
-    { src: brunetteMessyBun, alt: "Voluminous brunette updo with loose curls for a formal event" },
-    { src: brunetteHalfUpFormal, alt: "Formal half-up brunette hairstyle with long curls by Glow Salon & Spa" },
-    { src: brunetteBraidedUpdo, alt: "Brunette half-up wedding hairstyle with twisted detail and soft curls" },
-    { src: brunetteLowBraidedBun, alt: "Brunette half-up wedding hairstyle with braided detail and soft curls" },
-    { src: img1, alt: "Bridal hair styling with elegant waves by Glow Salon & Spa in Carmel, Indiana" },
-    { src: img2, alt: "Wedding day updo and bridal makeup by Glow Salon stylists" },
-    { src: img3, alt: "Bride getting ready with professional hair and makeup in Carmel, IN" },
-    { src: img4, alt: "Bridal party hair styling at Glow Salon & Spa, serving Carmel, Westfield, and Fishers" },
-    { src: img5, alt: "Professional bridal hairstyle for Indiana wedding by Glow Salon & Spa" },
-    { src: img6, alt: "Wedding hair and makeup services in Carmel, Indiana by Glow Salon & Spa" },
-    { src: img7, alt: "Half-up bridal hairstyle with soft waves by Glow Salon & Spa in Carmel, Indiana" },
-    { src: img8, alt: "Bridal curls with pearl and floral hairpiece by Glow Salon & Spa" },
-    { src: img9, alt: "Wedding hairstyle with floral hairpiece and soft curls by Glow Salon & Spa" },
-    { src: img10, alt: "Loose braided bridal hairstyle with soft curls by Glow Salon & Spa" },
-    { src: img11, alt: "Half-up highlighted bridal curls styled by Glow Salon & Spa in Carmel, Indiana" },
+  { src: brideTiaraPortrait, alt: 'Bride with tiara, elegant updo, and soft-glam wedding makeup by Glow Salon & Spa in Carmel, Indiana', title: 'Modern romance', detail: 'Tiara updo + soft glam' },
+  { src: bridalHalfUpWavesFront, alt: 'Bride with half-up soft waves and polished bridal makeup by Glow Salon & Spa in Carmel, Indiana', title: 'Softly polished', detail: 'Half-up waves + makeup' },
+  { src: bridalHalfUpWavesBack, alt: 'Back view of half-up bridal waves styled by Glow Salon & Spa in Carmel, Indiana', title: 'The back detail', detail: 'Half-up soft waves' },
+  { src: bridesmaidLowUpdo, alt: 'Polished bridesmaid low updo with dimensional highlights and face-framing curls', title: 'Effortless updo', detail: 'Textured low bun' },
+  { src: brideTiaraGlamour, alt: 'Soft-glam bridal makeup and tiara updo for an Indiana wedding', title: 'A little sparkle', detail: 'Tiara + soft glam' },
+  { src: brunetteLowPonytail, alt: 'Sleek brunette bridal ponytail with voluminous curls by Glow Salon & Spa', title: 'Statement pony', detail: 'Volume + polished curls' },
+  { src: brunetteTexturedUpdo, alt: 'Textured brunette wedding updo with soft face-framing pieces', title: 'Soft texture', detail: 'Romantic updo' },
+  { src: blondeCasualUpdo, alt: 'Soft blonde low bun styled for a wedding by Glow Salon & Spa', title: 'Undone elegance', detail: 'Soft low bun' },
+  { src: brunetteMessyBun, alt: 'Voluminous brunette updo with loose curls for a formal event', title: 'Airy volume', detail: 'Loose formal updo' },
+  { src: brunetteHalfUpFormal, alt: 'Formal half-up brunette hairstyle with long curls by Glow Salon & Spa', title: 'Classic half-up', detail: 'Long formal curls' },
+  { src: brunetteBraidedUpdo, alt: 'Brunette half-up wedding hairstyle with twisted detail and soft curls', title: 'Braided detail', detail: 'Texture + soft curls' },
+  { src: brunetteLowBraidedBun, alt: 'Brunette low wedding bun with braided detail and soft curls', title: 'Braided low bun', detail: 'Romantic detail' },
+  { src: img1, alt: 'Bridal hair styling with elegant waves by Glow Salon & Spa in Carmel, Indiana', title: 'Wedding waves', detail: 'Elegant styling' },
+  { src: img2, alt: 'Wedding day updo and bridal makeup by Glow Salon stylists', title: 'The full look', detail: 'Hair + makeup' },
+  { src: img3, alt: 'Bride getting ready with professional hair and makeup in Carmel, Indiana', title: 'Getting ready', detail: 'Wedding morning' },
+  { src: img4, alt: 'Bridal party hair styling at Glow Salon & Spa serving Carmel, Westfield, and Fishers', title: 'For the whole party', detail: 'Bridal party styling' },
+  { src: img5, alt: 'Professional bridal hairstyle for an Indiana wedding by Glow Salon & Spa', title: 'Lasting finish', detail: 'Wedding styling' },
+  { src: img6, alt: 'Wedding hair and makeup services in Carmel, Indiana by Glow Salon & Spa', title: 'Ready to celebrate', detail: 'Hair + makeup' },
+  { src: img7, alt: 'Half-up bridal hairstyle with soft waves by Glow Salon & Spa in Carmel, Indiana', title: 'Soft half-up', detail: 'Relaxed waves' },
+  { src: img8, alt: 'Bridal curls with pearl and floral hairpiece by Glow Salon & Spa', title: 'Pearl details', detail: 'Hairpiece + curls' },
+  { src: img9, alt: 'Wedding hairstyle with floral hairpiece and soft curls by Glow Salon & Spa', title: 'Fresh florals', detail: 'Hairpiece + soft curls' },
+  { src: img10, alt: 'Loose braided bridal hairstyle with soft curls by Glow Salon & Spa', title: 'Loose braid', detail: 'Soft bridal curls' },
+  { src: img11, alt: 'Half-up highlighted bridal curls styled by Glow Salon & Spa in Carmel, Indiana', title: 'Highlighted curls', detail: 'Half-up styling' },
 ];
 
 const imageGallerySchema = {
-    "@context": "https://schema.org",
-    "@type": "ImageGallery",
-    name: "Bridal Hair & Makeup Gallery - Glow Salon & Spa",
-    description: description,
-    url: `${BUSINESS_INFO.website}/services/bridal-gallery`,
-    creator: {
-        "@type": "BeautySalon",
-        name: BUSINESS_INFO.name,
-    },
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Bridal Hair & Makeup Gallery - Glow Salon & Spa',
+  description,
+  url: `${BUSINESS_INFO.website}/services/bridal-gallery`,
+  creator: { '@type': 'BeautySalon', name: BUSINESS_INFO.name },
 };
 ---
 
 <Layout title={title} description={description}>
-    <StructuredData data={imageGallerySchema} />
-    <Breadcrumbs items={[
-        { name: "Home", url: BUSINESS_INFO.website },
-        { name: "Services", url: `${BUSINESS_INFO.website}/services` },
-        { name: "Bridal", url: `${BUSINESS_INFO.website}/services/bridal` },
-        { name: "Gallery", url: `${BUSINESS_INFO.website}/services/bridal-gallery` },
-    ]} />
-
-
-    <div class="gallery-page">
-        <div class="gallery-container">
-            <!-- Page header -->
-            <div class="gallery-header">
-                <a href="/services/bridal/" class="back-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    Back to Bridal Services
-                </a>
-                <h1>Bridal Hair & Makeup Gallery</h1>
-                <p class="gallery-subtitle">Wedding hair &amp; makeup by the Glow Salon &amp; Spa team</p>
-            </div>
-
-            <!-- Gallery grid -->
-            <div class="gallery-grid">
-                {galleryImages.map((image, index) => (
-                    <div class="gallery-card">
-                        <Image
-                            src={image.src}
-                            alt={image.alt}
-                            class="gallery-card-image"
-                            loading={index < 3 ? "eager" : "lazy"}
-                            decoding="async"
-                            widths={index === 0 ? [600, 900, 1200] : [400, 600, 900]}
-                            sizes={index === 0
-                                ? "(max-width: 768px) 100vw, 66vw"
-                                : "(max-width: 768px) 50vw, 33vw"}
-                        />
-                    </div>
-                ))}
-            </div>
-
-            <!-- CTA -->
-            <div class="gallery-cta">
-                <p>Love what you see? Let's create your perfect bridal look.</p>
-                <a href="/services/bridal/" class="cta-link">
-                    View Pricing &amp; Book
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-
+  <StructuredData data={imageGallerySchema} />
+  <Breadcrumbs items={[
+    { name: 'Home', url: BUSINESS_INFO.website },
+    { name: 'Services', url: `${BUSINESS_INFO.website}/services` },
+    { name: 'Bridal', url: `${BUSINESS_INFO.website}/services/bridal` },
+    { name: 'Gallery', url: `${BUSINESS_INFO.website}/services/bridal-gallery` },
+  ]} />
+  <PortfolioGallery
+    eyebrow="The Bridal Edit"
+    heading="Real brides, beautiful moments."
+    intro="A closer look at wedding hair and makeup created by our team, from relaxed waves and softly textured updos to polished glam that still feels like you."
+    backHref="/services/bridal/"
+    backLabel="Back to Bridal Services"
+    images={galleryImages}
+    ctaText="Have a look in mind for your day?"
+    ctaHref="/services/bridal/"
+    ctaLabel="Explore bridal services"
+  />
 </Layout>
-
-<style>
-    /* ===== Page layout ===== */
-    .gallery-page {
-        padding: 2rem 0 0;
-        min-height: 80vh;
-    }
-
-    .gallery-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    /* ===== Header ===== */
-    .gallery-header {
-        margin-bottom: 40px;
-    }
-
-    .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: 'Jost', sans-serif;
-        font-size: 0.78rem;
-        letter-spacing: 0.08em;
-        font-weight: 400;
-        color: var(--warm-gray);
-        text-decoration: none;
-        margin-bottom: 16px;
-        transition: color 0.2s ease;
-    }
-
-    .back-link svg {
-        width: 16px;
-        height: 16px;
-        transition: transform 0.2s ease;
-    }
-
-    .back-link:hover {
-        color: #333;
-    }
-
-    .back-link:hover svg {
-        transform: translateX(-3px);
-    }
-
-    .gallery-header h1 {
-        font-family: 'Cormorant Garamond', 'Georgia', serif;
-        color: var(--deep);
-        font-size: 2.8rem;
-        font-weight: 300;
-        margin: 0 0 10px;
-        line-height: 1.1;
-    }
-
-    .gallery-subtitle {
-        font-family: 'Jost', sans-serif;
-        color: var(--warm-gray);
-        font-size: 0.9rem;
-        font-weight: 300;
-        margin: 0;
-        letter-spacing: 0.01em;
-    }
-
-    /* ===== Gallery grid ===== */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-    }
-
-    .gallery-card {
-        position: relative;
-        overflow: hidden;
-        background: #f5f0ec;
-        aspect-ratio: 3 / 4;
-        border-radius: 4px;
-    }
-
-    .gallery-card:nth-child(1) {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-
-    .gallery-card-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .gallery-card:hover .gallery-card-image {
-        transform: scale(1.03);
-    }
-
-    /* ===== CTA ===== */
-    .gallery-cta {
-        text-align: center;
-        margin: 50px 0 60px;
-    }
-
-    .gallery-cta p {
-        font-family: 'Jost', sans-serif;
-        color: var(--warm-gray);
-        font-size: 0.9rem;
-        font-weight: 300;
-        margin: 0 0 16px;
-    }
-
-    .cta-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: 'Jost', sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        font-weight: 400;
-        color: var(--deep);
-        background: transparent;
-        text-decoration: none;
-        padding: 0.75rem 1.75rem;
-        border: 1px solid var(--deep);
-        transition: all 0.25s ease;
-    }
-
-    .cta-link svg {
-        width: 18px;
-        height: 18px;
-        transition: transform 0.3s ease;
-    }
-
-    .cta-link:hover {
-        background: var(--deep);
-        color: var(--cream);
-        transform: translateY(-1px);
-    }
-
-    .cta-link:hover svg {
-        transform: translateX(3px);
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-        .gallery-header h1 {
-            font-size: 2.2rem;
-        }
-
-        .gallery-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 5px;
-        }
-
-        .gallery-card:nth-child(1) {
-            grid-column: span 2;
-            grid-row: span 1;
-            aspect-ratio: 4 / 3;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .gallery-header h1 {
-            font-size: 1.8rem;
-        }
-
-        .gallery-grid {
-            gap: 4px;
-        }
-
-        .gallery-cta {
-            margin: 35px 0 50px;
-        }
-    }
-</style>

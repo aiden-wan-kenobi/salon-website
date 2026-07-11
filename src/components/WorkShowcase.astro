@@ -1,0 +1,271 @@
+---
+import { Image } from 'astro:assets';
+import blondeBalayage from '../assets/hair/blonde-balayage-wavy-long-2.webp';
+import brunetteWaves from '../assets/hair/dark-brunette-long-waves-2.webp';
+import bridalPortrait from '../assets/bridal/bride-updo-tiara-portrait.webp';
+import bridalWaves from '../assets/bridal/bridal-half-up-waves-back.webp';
+
+const looks = [
+  {
+    src: blondeBalayage,
+    alt: 'Dimensional blonde balayage styled in soft waves by Glow Salon & Spa',
+    className: 'look-hair-main',
+  },
+  {
+    src: bridalPortrait,
+    alt: 'Bride with tiara, soft-glam makeup, and an elegant updo by Glow Salon & Spa',
+    className: 'look-bridal-main',
+  },
+  {
+    src: brunetteWaves,
+    alt: 'Glossy brunette hair styled in long waves by Glow Salon & Spa',
+    className: 'look-hair-detail',
+  },
+  {
+    src: bridalWaves,
+    alt: 'Back view of polished half-up bridal waves by Glow Salon & Spa',
+    className: 'look-bridal-detail',
+  },
+];
+---
+
+<section class="work-showcase" aria-labelledby="work-heading">
+  <div class="work-inner">
+    <header class="work-header">
+      <div>
+        <p class="eyebrow">Made at Glow</p>
+        <h2 id="work-heading">A little look at<br /><em>our work.</em></h2>
+      </div>
+      <p class="work-intro">
+        Real color, styling, and bridal beauty created by our Carmel salon team.
+        Come for inspiration, then let us make the look feel like you.
+      </p>
+    </header>
+
+    <div class="work-collage">
+      {looks.map((look, index) => (
+        <div class:list={['work-image', look.className]}>
+          <Image
+            src={look.src}
+            alt={look.alt}
+            widths={[420, 680, 960]}
+            sizes={index < 2 ? '(max-width: 760px) 50vw, 35vw' : '(max-width: 760px) 50vw, 25vw'}
+            quality={85}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))}
+      <div class="work-note" aria-hidden="true">
+        <span>Cut</span><span>Color</span><span>Bridal</span><span>Glow</span>
+      </div>
+    </div>
+
+    <nav class="gallery-links" aria-label="View our work galleries">
+      <a href="/services/hair-gallery/">
+        <span>Hair lookbook</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a href="/services/bridal-gallery/">
+        <span>Bridal lookbook</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<style>
+  .work-showcase {
+    padding: 7rem 2rem;
+    background: #f3ece6;
+    overflow: hidden;
+  }
+
+  .work-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .work-header {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 0.55fr);
+    align-items: end;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin: 0 0 0.75rem;
+  }
+
+  h2 {
+    font-size: clamp(2.7rem, 5vw, 4.6rem);
+    font-weight: 300;
+    line-height: 0.98;
+    margin: 0;
+  }
+
+  h2 em {
+    color: var(--rose);
+    font-style: italic;
+  }
+
+  .work-intro {
+    color: var(--warm-gray);
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0 0 0.4rem;
+  }
+
+  .work-collage {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(10, 42px);
+    gap: 12px;
+  }
+
+  .work-image {
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .work-image:hover img {
+    transform: scale(1.025);
+  }
+
+  .look-hair-main {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 9;
+  }
+
+  .look-bridal-main {
+    grid-column: 6 / span 4;
+    grid-row: 2 / span 8;
+  }
+
+  .look-hair-detail {
+    grid-column: 10 / span 3;
+    grid-row: 1 / span 5;
+  }
+
+  .look-bridal-detail {
+    grid-column: 10 / span 3;
+    grid-row: 6 / span 5;
+  }
+
+  .work-note {
+    grid-column: 2 / span 3;
+    grid-row: 9 / span 2;
+    align-self: end;
+    background: var(--deep);
+    color: var(--cream);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  .gallery-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .gallery-links a {
+    min-width: 190px;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    color: var(--deep);
+    border-bottom: 1px solid var(--rose);
+    padding: 0.65rem 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .gallery-links a:hover,
+  .gallery-links a:focus-visible {
+    color: var(--rose);
+  }
+
+  @media (max-width: 800px) {
+    .work-showcase {
+      padding: 4.5rem 1.25rem;
+    }
+
+    .work-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .work-intro {
+      max-width: 520px;
+    }
+
+    .work-collage {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: 250px 190px;
+      gap: 6px;
+    }
+
+    .look-hair-main,
+    .look-bridal-main,
+    .look-hair-detail,
+    .look-bridal-detail {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .look-hair-detail,
+    .look-bridal-detail {
+      grid-row: 2;
+    }
+
+    .work-note {
+      display: none;
+    }
+
+    .gallery-links {
+      justify-content: stretch;
+      gap: 1.25rem;
+    }
+
+    .gallery-links a {
+      min-width: 0;
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .gallery-links {
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .work-image img {
+      transition: none;
+    }
+  }
+</style>
