@@ -170,7 +170,7 @@ export const waxingFAQs: FAQItem[] = [
 export const bridalFAQs: FAQItem[] = [
   {
     question: "Do you offer bridal hair and makeup trials?",
-    answer: "Yes! We strongly recommend a trial before your wedding day. Bridal hair with trial is $220 and bridal makeup with trial is $220. This ensures we perfect your look so you feel confident on the big day.",
+    answer: "Yes! We strongly recommend a trial before your wedding day. Bridal hair with trial is $275 and bridal makeup with trial is $275. This ensures we perfect your look so you feel confident on the big day.",
   },
   {
     question: "Can you come to my wedding venue for hair and makeup?",
@@ -182,7 +182,7 @@ export const bridalFAQs: FAQItem[] = [
   },
   {
     question: "Do you offer discounts for bridal parties?",
-    answer: "Yes! We offer bundled packages that save you money. Our Classic Bridal Package (hair and makeup with trials) is $370, saving you $70 off individual pricing. Bridesmaid and Moms bundles are $180 per person, saving $20 each.",
+    answer: "Yes! We offer bundled packages that save you money. Our Classic Bridal Package (hair and makeup with trials) is $495, saving you $55 off individual pricing. Bridesmaid and Moms bundles are $200 per person, saving you $10 each.",
   },
   {
     question: "How long does bridal hair and makeup take on the wedding day?",
