@@ -67,7 +67,8 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
           alt={image.alt}
           class="look-image"
           loading={index < 3 ? 'eager' : 'lazy'}
-          decoding="async"
+          decoding={index < 3 ? 'sync' : 'async'}
+          fetchpriority={index < 3 ? 'high' : 'auto'}
           widths={[420, 680, 960, 1280]}
           sizes={layout === 'feature' || layout === 'wide'
             ? '(max-width: 700px) 100vw, 66vw'
