@@ -10,6 +10,9 @@ const blogLastModified = new Map(
     post.modifiedDate ?? post.publishedDate,
   ]),
 );
+const pageLastModified = new Map([
+  ['/services/bridal-gallery', '2026-09-20'],
+]);
 const latestBlogDate = blogPosts.reduce(
   (latest, post) =>
     (post.modifiedDate ?? post.publishedDate) > latest
@@ -33,6 +36,7 @@ export default defineConfig({
         const path = url.pathname.replace(/\/$/, '');
         const lastModified =
           blogLastModified.get(path) ??
+          pageLastModified.get(path) ??
           (path === '/blog' ? latestBlogDate : SITE_LAST_UPDATED);
 
         if (path === '' || path === '/') {
