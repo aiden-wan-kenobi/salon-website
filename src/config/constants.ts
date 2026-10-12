@@ -55,7 +55,8 @@ export const BUSINESS_INFO = {
   formspreeId: "mkgjnwqo",
   aggregateRating: {
     ratingValue: 4.6,
-    reviewCount: 55,
+    reviewCount: 62,
+    fiveStarReviewCount: 52,
     bestRating: 5,
     worstRating: 1,
   },
