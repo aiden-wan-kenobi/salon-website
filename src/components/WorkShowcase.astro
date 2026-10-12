@@ -1,7 +1,11 @@
 ---
 import { Image } from 'astro:assets';
+
 import blondeBalayage from '../assets/hair/blonde-balayage-wavy-long-2.webp';
 import brunetteWaves from '../assets/hair/dark-brunette-long-waves-2.webp';
+import livedInColor from '../assets/hair/IMG_5380.webp';
+import brightDimension from '../assets/hair/IMG_5466.webp';
+import softMovement from '../assets/hair/IMG_5502.webp';
 import bridalPortrait from '../assets/bridal/bride-updo-tiara-portrait.webp';
 import bridalWaves from '../assets/bridal/bridal-half-up-waves-back.webp';
 
@@ -9,263 +13,453 @@ const looks = [
   {
     src: blondeBalayage,
     alt: 'Dimensional blonde balayage styled in soft waves by Glow Salon & Spa',
-    className: 'look-hair-main',
-  },
-  {
-    src: bridalPortrait,
-    alt: 'Bride with tiara, soft-glam makeup, and an elegant updo by Glow Salon & Spa',
-    className: 'look-bridal-main',
+    title: 'Dimensional blonde',
+    note: 'Balayage + soft waves',
+    href: '/services/hair-gallery/',
+    kind: 'hair',
+    className: 'look-one',
+    taped: true,
   },
   {
     src: brunetteWaves,
     alt: 'Glossy brunette hair styled in long waves by Glow Salon & Spa',
-    className: 'look-hair-detail',
+    title: 'Rich brunette',
+    note: 'Gloss + long layers',
+    href: '/services/hair-gallery/',
+    kind: 'hair',
+    className: 'look-two',
+  },
+  {
+    src: livedInColor,
+    alt: 'Lived-in dimensional hair color created at Glow Salon & Spa',
+    title: 'Lived-in color',
+    note: 'Soft dimension',
+    href: '/services/hair-gallery/',
+    kind: 'hair',
+    className: 'look-three',
+    taped: true,
+  },
+  {
+    src: bridalPortrait,
+    alt: 'Bride with a tiara, soft-glam makeup, and an elegant updo by Glow Salon & Spa',
+    title: 'The bridal glow',
+    note: 'Updo + soft glam',
+    href: '/services/bridal-gallery/',
+    kind: 'bridal',
+    className: 'look-four',
+  },
+  {
+    src: brightDimension,
+    alt: 'Bright dimensional highlights and styling by Glow Salon & Spa',
+    title: 'Bright dimension',
+    note: 'Highlights + blowout',
+    href: '/services/hair-gallery/',
+    kind: 'hair',
+    className: 'look-five',
+  },
+  {
+    src: softMovement,
+    alt: 'Softly styled hair with movement created at Glow Salon & Spa',
+    title: 'Soft movement',
+    note: 'Style + finish',
+    href: '/services/hair-gallery/',
+    kind: 'hair',
+    className: 'look-six',
+    taped: true,
   },
   {
     src: bridalWaves,
     alt: 'Back view of polished half-up bridal waves by Glow Salon & Spa',
-    className: 'look-bridal-detail',
+    title: 'A bridal moment',
+    note: 'Half-up + polished waves',
+    href: '/services/bridal-gallery/',
+    kind: 'bridal',
+    className: 'look-seven',
   },
 ];
 ---
 
-<section class="work-showcase" aria-labelledby="work-heading">
-  <div class="work-inner">
-    <header class="work-header">
-      <div>
-        <p class="eyebrow">Made at Glow</p>
-        <h2 id="work-heading">A little look at<br /><em>our work.</em></h2>
+<section id="the-glow-edit" class="glow-edit" aria-labelledby="glow-edit-heading">
+  <div class="glow-edit-inner">
+    <header class="edit-header">
+      <div class="edit-title">
+        <p class="eyebrow">The Glow Edit</p>
+        <h2 id="glow-edit-heading">Fresh from<br /><em>the chairs.</em></h2>
       </div>
-      <p class="work-intro">
-        Real color, styling, and bridal beauty created by our Carmel salon team.
-        Come for inspiration, then let us make the look feel like you.
-      </p>
+
+      <div class="edit-intro">
+        <p>
+          A living scrapbook of color, cuts, styling, and a little bridal magic—
+          all created by our team right here in Carmel.
+        </p>
+        <a href="/services/hair-gallery/">
+          Explore the hair lookbook
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
     </header>
 
-    <div class="work-collage">
-      {looks.map((look, index) => (
-        <div class:list={['work-image', look.className]}>
-          <Image
-            src={look.src}
-            alt={look.alt}
-            widths={[420, 680, 960]}
-            sizes={index < 2 ? '(max-width: 760px) 50vw, 35vw' : '(max-width: 760px) 50vw, 25vw'}
-            quality={85}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+    <p class="swipe-note">Swipe through our latest loves <span aria-hidden="true">&rarr;</span></p>
+
+    <div class="memory-board" role="list" aria-label="A scrapbook of recent work by Glow Salon & Spa">
+      <span class="board-stamp" aria-hidden="true">Made with care<br />in Carmel, IN</span>
+
+      {looks.map((look) => (
+        <a
+          href={look.href}
+          class:list={['memory-card', look.className, { taped: look.taped }]}
+          role="listitem"
+          aria-label={`View ${look.title} in the ${look.kind === 'bridal' ? 'bridal' : 'hair'} lookbook`}
+        >
+          <figure>
+            <div class="photo-window">
+              <Image
+                src={look.src}
+                alt={look.alt}
+                widths={[320, 480, 680]}
+                sizes="(max-width: 760px) 78vw, 25vw"
+                quality={85}
+                loading="lazy"
+                decoding="async"
+              />
+              {look.kind === 'bridal' && <span class="bridal-tag">Bridal</span>}
+            </div>
+            <figcaption>
+              <strong>{look.title}</strong>
+              <span>{look.note}</span>
+            </figcaption>
+          </figure>
+        </a>
       ))}
-      <div class="work-note" aria-hidden="true">
-        <span>Cut</span><span>Color</span><span>Bridal</span><span>Glow</span>
-      </div>
     </div>
 
-    <nav class="gallery-links" aria-label="View our work galleries">
-      <a href="/services/hair-gallery/">
-        <span>Hair lookbook</span>
-        <span aria-hidden="true">&rarr;</span>
-      </a>
-      <a href="/services/bridal-gallery/">
-        <span>Bridal lookbook</span>
-        <span aria-hidden="true">&rarr;</span>
-      </a>
-    </nav>
+    <footer class="edit-footer">
+      <p>See a look you love? Save it for your next appointment.</p>
+      <nav aria-label="View Glow Salon galleries">
+        <a href="/services/hair-gallery/">Hair lookbook <span aria-hidden="true">&rarr;</span></a>
+        <a href="/services/bridal-gallery/">Bridal lookbook <span aria-hidden="true">&rarr;</span></a>
+      </nav>
+    </footer>
   </div>
 </section>
 
 <style>
-  .work-showcase {
-    padding: 7rem 2rem;
-    background: #f3ece6;
+  .glow-edit {
+    position: relative;
     overflow: hidden;
+    padding: 7rem 2rem 6.5rem;
+    background:
+      linear-gradient(rgba(254, 250, 245, 0.92), rgba(245, 235, 226, 0.96)),
+      repeating-linear-gradient(0deg, transparent 0 27px, rgba(138, 120, 114, 0.11) 27px 28px);
   }
 
-  .work-inner {
-    max-width: 1200px;
+  .glow-edit::before,
+  .glow-edit::after {
+    content: '';
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(201, 160, 144, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .glow-edit::before { top: -170px; left: -80px; }
+  .glow-edit::after { right: -140px; bottom: -150px; }
+
+  .glow-edit-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
     margin: 0 auto;
   }
 
-  .work-header {
+  .edit-header {
     display: grid;
-    grid-template-columns: 1fr minmax(280px, 0.55fr);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.55fr);
     align-items: end;
     gap: 4rem;
     margin-bottom: 3rem;
   }
 
   .eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--rose);
     font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--rose);
-    margin: 0 0 0.75rem;
   }
 
   h2 {
-    font-size: clamp(2.7rem, 5vw, 4.6rem);
+    margin: 0;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
     font-weight: 300;
-    line-height: 0.98;
+    line-height: 0.88;
+  }
+
+  h2 em { color: var(--rose); font-style: italic; }
+
+  .edit-intro > p {
+    max-width: 470px;
+    margin: 0 0 1.35rem;
+    color: var(--warm-gray);
+    font-size: 0.94rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .edit-intro > a,
+  .edit-footer a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding-bottom: 0.38rem;
+    border-bottom: 1px solid var(--rose);
+    color: var(--deep);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s ease, gap 0.2s ease;
+  }
+
+  .edit-intro > a:hover,
+  .edit-intro > a:focus-visible,
+  .edit-footer a:hover,
+  .edit-footer a:focus-visible { color: var(--rose); gap: 1.5rem; }
+
+  .swipe-note { display: none; }
+
+  .memory-board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(22, 29px);
+    gap: 10px;
+    padding: 2rem 2rem 2.5rem;
+    background-color: #d8b8a9;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba(61, 43, 35, 0.08) 0 1px, transparent 1px);
+    background-size: 13px 13px, 17px 17px;
+    box-shadow: inset 0 0 70px rgba(61, 43, 35, 0.11);
+  }
+
+  .board-stamp {
+    position: absolute;
+    z-index: 5;
+    right: 3.2%;
+    top: 48%;
+    width: 92px;
+    height: 92px;
+    display: grid;
+    place-content: center;
+    border: 1px solid rgba(61, 43, 35, 0.44);
+    border-radius: 50%;
+    color: rgba(61, 43, 35, 0.68);
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    line-height: 1.45;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(8deg);
+  }
+
+  .memory-card {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    padding: 0.65rem 0.65rem 0.55rem;
+    background: #fffdfa;
+    color: var(--deep);
+    text-decoration: none;
+    box-shadow: 0 9px 22px rgba(61, 43, 35, 0.2);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, z-index 0s;
+  }
+
+  .memory-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(61, 43, 35, 0.04);
+    pointer-events: none;
+  }
+
+  .memory-card.taped::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    top: -12px;
+    left: 50%;
+    width: 72px;
+    height: 24px;
+    background: rgba(239, 220, 185, 0.77);
+    box-shadow: 0 1px 2px rgba(61, 43, 35, 0.1);
+    transform: translateX(-50%) rotate(-2deg);
+    backdrop-filter: blur(1px);
+  }
+
+  .memory-card:hover,
+  .memory-card:focus-visible {
+    z-index: 4;
+    box-shadow: 0 18px 34px rgba(61, 43, 35, 0.3);
+  }
+
+  .memory-card:focus-visible { outline: 3px solid var(--deep); outline-offset: 4px; }
+
+  .memory-card figure {
+    height: 100%;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 0.55rem;
     margin: 0;
   }
 
-  h2 em {
-    color: var(--rose);
+  .photo-window {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    background: #eadfd7;
+  }
+
+  .photo-window img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(0.93) contrast(0.98);
+    transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.3s ease;
+  }
+
+  .memory-card:hover img,
+  .memory-card:focus-visible img { transform: scale(1.035); filter: saturate(1) contrast(1); }
+
+  .bridal-tag {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    background: rgba(61, 43, 35, 0.82);
+    color: var(--cream);
+    font-size: 0.5rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  figcaption { min-height: 34px; padding: 0 0.2rem; }
+  figcaption strong,
+  figcaption span { display: block; }
+
+  figcaption strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1rem, 1.55vw, 1.3rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  figcaption span {
+    margin-top: 0.3rem;
+    color: var(--warm-gray);
+    font-size: 0.5rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .look-one { grid-column: 1 / span 3; grid-row: 2 / span 10; transform: rotate(-3deg); }
+  .look-one:hover,
+  .look-one:focus-visible { transform: rotate(-1deg) translateY(-6px); }
+  .look-two { grid-column: 4 / span 3; grid-row: 1 / span 11; transform: rotate(1.5deg); }
+  .look-two:hover,
+  .look-two:focus-visible { transform: rotate(0.5deg) translateY(-6px); }
+  .look-three { grid-column: 7 / span 3; grid-row: 2 / span 10; transform: rotate(-1deg); }
+  .look-three:hover,
+  .look-three:focus-visible { transform: rotate(0deg) translateY(-6px); }
+  .look-four { grid-column: 10 / span 3; grid-row: 1 / span 11; transform: rotate(2.5deg); }
+  .look-four:hover,
+  .look-four:focus-visible { transform: rotate(1deg) translateY(-6px); }
+  .look-five { grid-column: 2 / span 3; grid-row: 13 / span 10; transform: rotate(1.8deg); }
+  .look-five:hover,
+  .look-five:focus-visible { transform: rotate(0.6deg) translateY(-6px); }
+  .look-six { grid-column: 5 / span 4; grid-row: 12 / span 11; transform: rotate(-1.5deg); }
+  .look-six:hover,
+  .look-six:focus-visible { transform: rotate(-0.4deg) translateY(-6px); }
+  .look-seven { grid-column: 9 / span 3; grid-row: 13 / span 10; transform: rotate(2deg); }
+  .look-seven:hover,
+  .look-seven:focus-visible { transform: rotate(0.8deg) translateY(-6px); }
+
+  .edit-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 2.5rem;
+  }
+
+  .edit-footer > p {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.85rem);
     font-style: italic;
   }
 
-  .work-intro {
-    color: var(--warm-gray);
-    font-size: 0.92rem;
-    font-weight: 300;
-    line-height: 1.8;
-    margin: 0 0 0.4rem;
+  .edit-footer nav { display: flex; gap: 2rem; }
+
+  @media (max-width: 900px) {
+    .memory-board { grid-template-rows: repeat(22, 22px); }
+    .board-stamp { display: none; }
+    .edit-footer { align-items: flex-start; flex-direction: column; }
   }
 
-  .work-collage {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: repeat(10, 42px);
-    gap: 12px;
-  }
+  @media (max-width: 760px) {
+    .glow-edit { padding: 4.5rem 0 4rem; }
+    .edit-header,
+    .edit-footer { margin-inline: 1.25rem; }
+    .edit-header { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    h2 { font-size: clamp(3rem, 15vw, 4.4rem); }
 
-  .work-image {
-    overflow: hidden;
-    min-width: 0;
-  }
-
-  .work-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-
-  .work-image:hover img {
-    transform: scale(1.025);
-  }
-
-  .look-hair-main {
-    grid-column: 1 / span 5;
-    grid-row: 1 / span 9;
-  }
-
-  .look-bridal-main {
-    grid-column: 6 / span 4;
-    grid-row: 2 / span 8;
-  }
-
-  .look-hair-detail {
-    grid-column: 10 / span 3;
-    grid-row: 1 / span 5;
-  }
-
-  .look-bridal-detail {
-    grid-column: 10 / span 3;
-    grid-row: 6 / span 5;
-  }
-
-  .work-note {
-    grid-column: 2 / span 3;
-    grid-row: 9 / span 2;
-    align-self: end;
-    background: var(--deep);
-    color: var(--cream);
-    padding: 1.1rem 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    z-index: 1;
-  }
-
-  .gallery-links {
-    display: flex;
-    justify-content: flex-end;
-    gap: 2.5rem;
-    margin-top: 2rem;
-  }
-
-  .gallery-links a {
-    min-width: 190px;
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    color: var(--deep);
-    border-bottom: 1px solid var(--rose);
-    padding: 0.65rem 0;
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .gallery-links a:hover,
-  .gallery-links a:focus-visible {
-    color: var(--rose);
-  }
-
-  @media (max-width: 800px) {
-    .work-showcase {
-      padding: 4.5rem 1.25rem;
+    .swipe-note {
+      display: block;
+      margin: 0 1.25rem 1rem;
+      color: var(--warm-gray);
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
 
-    .work-header {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+    .memory-board {
+      display: flex;
+      gap: 1.1rem;
+      overflow-x: auto;
+      padding: 2rem 1.25rem 2.4rem;
+      scroll-padding-inline: 1.25rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .work-intro {
-      max-width: 520px;
+    .memory-card,
+    .memory-card:hover,
+    .memory-card:focus-visible {
+      flex: 0 0 min(76vw, 310px);
+      aspect-ratio: 0.76;
+      scroll-snap-align: center;
+      transform: rotate(-1.5deg);
     }
 
-    .work-collage {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: 250px 190px;
-      gap: 6px;
-    }
-
-    .look-hair-main,
-    .look-bridal-main,
-    .look-hair-detail,
-    .look-bridal-detail {
-      grid-column: auto;
-      grid-row: auto;
-    }
-
-    .look-hair-detail,
-    .look-bridal-detail {
-      grid-row: 2;
-    }
-
-    .work-note {
-      display: none;
-    }
-
-    .gallery-links {
-      justify-content: stretch;
-      gap: 1.25rem;
-    }
-
-    .gallery-links a {
-      min-width: 0;
-      flex: 1;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .gallery-links {
-      flex-direction: column;
-    }
+    .memory-card:nth-of-type(even),
+    .memory-card:nth-of-type(even):hover,
+    .memory-card:nth-of-type(even):focus-visible { transform: rotate(1.5deg); }
+    figcaption strong { font-size: 1.25rem; }
+    .edit-footer { padding-top: 2.25rem; }
+    .edit-footer nav { width: 100%; align-items: flex-start; flex-direction: column; gap: 1.25rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .work-image img {
-      transition: none;
-    }
+    .memory-card,
+    .photo-window img,
+    .edit-intro > a,
+    .edit-footer a { transition: none; }
+    .memory-board { scroll-behavior: auto; }
   }
 </style>

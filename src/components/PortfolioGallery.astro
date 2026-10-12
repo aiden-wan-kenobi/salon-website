@@ -50,40 +50,48 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
     </div>
   </div>
 
-  <div class="lookbook" aria-label={`${heading} photos`}>
+  <p class="gallery-note">
+    <span aria-hidden="true">✦</span>
+    Click any print for a closer look
+  </p>
+
+  <ul class="lookbook" aria-label={`${heading} photos`}>
     {images.map((image, index) => {
       const layout = image.layout ?? layoutClasses[index % layoutClasses.length];
 
       return (
-      <button
-        class:list={['look', layout]}
-        type="button"
-        data-gallery-item
-        data-index={index}
-        aria-label={`Open ${image.title} in full screen`}
-      >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          class="look-image"
-          loading={index < 3 ? 'eager' : 'lazy'}
-          decoding={index < 3 ? 'sync' : 'async'}
-          fetchpriority={index < 3 ? 'high' : 'auto'}
-          widths={[420, 680, 960, 1280]}
-          sizes={layout === 'feature' || layout === 'wide'
-            ? '(max-width: 700px) 100vw, 66vw'
-            : '(max-width: 700px) 50vw, 34vw'}
-          quality={86}
-        />
-        <span class="look-caption">
-          <strong>{image.title}</strong>
-          {image.detail && <span>{image.detail}</span>}
-        </span>
-        <span class="expand-icon" aria-hidden="true">+</span>
-      </button>
+        <li class:list={['look-wrap', layout]}>
+          <button
+            class="look"
+            type="button"
+            data-gallery-item
+            data-index={index}
+            data-full-src={image.src.src}
+            aria-label={`Open ${image.title} in full screen`}
+          >
+            <span class="photo-frame">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                class="look-image"
+                loading={index < 3 ? 'eager' : 'lazy'}
+                decoding={index < 3 ? 'sync' : 'async'}
+                fetchpriority={index < 3 ? 'high' : 'auto'}
+                widths={[320, 480, 680, 960]}
+                sizes="(max-width: 800px) 50vw, 33vw"
+                quality={86}
+              />
+              <span class="expand-icon" aria-hidden="true">+</span>
+            </span>
+            <span class="look-caption">
+              <strong>{image.title}</strong>
+              {image.detail && <span>{image.detail}</span>}
+            </span>
+          </button>
+        </li>
       );
     })}
-  </div>
+  </ul>
 
   <div class="portfolio-cta">
     <p>{ctaText}</p>
@@ -124,7 +132,7 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
     const detail = item.querySelector<HTMLElement>('.look-caption span');
     if (!image || !title) return;
 
-    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.src = item.dataset.fullSrc ?? image.currentSrc ?? image.src;
     lightboxImage.alt = image.alt;
     lightboxTitle.textContent = title.textContent;
     lightboxDetail.textContent = detail?.textContent ?? '';
@@ -153,45 +161,62 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
 
 <style>
   .portfolio {
+    position: relative;
+    overflow: hidden;
     padding: 3rem 2rem 6rem;
-    background: #fff;
+    background:
+      linear-gradient(rgba(254, 250, 245, 0.94), rgba(247, 239, 232, 0.96)),
+      repeating-linear-gradient(0deg, transparent 0 27px, rgba(138, 120, 114, 0.11) 27px 28px);
   }
 
+  .portfolio::before,
+  .portfolio::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(201, 160, 144, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .portfolio::before { top: -180px; right: -80px; }
+  .portfolio::after { bottom: -190px; left: -100px; }
+
   .portfolio-intro,
+  .gallery-note,
   .lookbook,
   .portfolio-cta {
+    position: relative;
+    z-index: 1;
     max-width: 1240px;
     margin-inline: auto;
   }
 
-  .portfolio-intro {
-    padding: 1.5rem 0 3.5rem;
-  }
+  .portfolio-intro { padding: 1.5rem 0 3rem; }
 
   .back-link {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
+    margin-bottom: 3.5rem;
     color: var(--warm-gray);
     font-size: 0.72rem;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
     text-decoration: none;
-    margin-bottom: 3.5rem;
+    text-transform: uppercase;
     transition: color 0.2s ease;
   }
 
   .back-link:hover,
-  .back-link:focus-visible {
-    color: var(--rose);
-  }
+  .back-link:focus-visible { color: var(--rose); }
 
   .eyebrow {
+    margin: 0 0 0.8rem;
     color: var(--rose);
     font-size: 0.68rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.8rem;
   }
 
   .intro-grid {
@@ -202,125 +227,181 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
   }
 
   h1 {
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
-    line-height: 0.96;
-    font-weight: 300;
-    margin: 0;
     max-width: 780px;
+    margin: 0;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 0.96;
   }
 
   .intro-grid > p {
+    max-width: 430px;
+    margin: 0;
     color: var(--warm-gray);
     font-size: 0.95rem;
     font-weight: 300;
     line-height: 1.8;
-    margin: 0;
-    max-width: 430px;
   }
+
+  .gallery-note {
+    margin-bottom: 1rem;
+    color: var(--warm-gray);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .gallery-note span { margin-right: 0.35rem; color: var(--rose); }
 
   .lookbook {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-auto-rows: 24px;
-    grid-auto-flow: dense;
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 1.75rem 1.65rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 2.25rem 2rem 0.6rem;
+    list-style: none;
+    background-color: #d8b8a9;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px),
+      radial-gradient(circle at 80% 70%, rgba(61, 43, 35, 0.08) 0 1px, transparent 1px);
+    background-size: 13px 13px, 17px 17px;
+    box-shadow: inset 0 0 70px rgba(61, 43, 35, 0.1);
+  }
+
+  .look-wrap {
+    --tilt: -0.75deg;
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    transform: rotate(var(--tilt));
+    transition: transform 0.3s ease, z-index 0s;
+  }
+
+  .look-wrap:nth-child(3n + 2) { --tilt: 0.9deg; }
+  .look-wrap:nth-child(5n + 3) { --tilt: -1.25deg; }
+  .look-wrap:nth-child(7n) { --tilt: 1.35deg; }
+
+  .look-wrap:hover,
+  .look-wrap:focus-within {
+    z-index: 3;
+    transform: rotate(0deg) translateY(-5px);
   }
 
   .look {
-    grid-column: span 4;
-    grid-row: span 20;
     position: relative;
-    overflow: hidden;
+    display: block;
+    width: 100%;
     border: 0;
-    border-radius: 2px;
-    padding: 0;
-    background: #eee8e2;
-    color: #fff;
+    padding: 0.68rem 0.68rem 0.8rem;
+    background: #fffdfa;
+    color: var(--deep);
+    box-shadow: 0 9px 22px rgba(61, 43, 35, 0.2);
     cursor: zoom-in;
     text-align: left;
+    transition: box-shadow 0.3s ease;
   }
 
-  .look.feature {
-    grid-column: span 8;
-    grid-row: span 34;
+  .look::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(61, 43, 35, 0.05);
+    pointer-events: none;
   }
 
-  .look.tall {
-    grid-row: span 27;
+  .look-wrap:nth-child(5n + 1) .look::after,
+  .look-wrap:nth-child(8n + 4) .look::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: -12px;
+    left: 50%;
+    width: 72px;
+    height: 24px;
+    background: rgba(239, 220, 185, 0.78);
+    box-shadow: 0 1px 2px rgba(61, 43, 35, 0.1);
+    transform: translateX(-50%) rotate(-2deg);
+    backdrop-filter: blur(1px);
   }
 
-  .look.wide {
-    grid-column: span 8;
-    grid-row: span 18;
+  .look-wrap:nth-child(8n + 4) .look::after { transform: translateX(-50%) rotate(3deg); }
+
+  .look:hover,
+  .look:focus-visible { box-shadow: 0 18px 34px rgba(61, 43, 35, 0.28); }
+
+  .look:focus-visible { outline: 3px solid var(--deep); outline-offset: 4px; }
+
+  .photo-frame {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: #eadfd7;
   }
 
-  .look.compact {
-    grid-row: span 12;
-  }
+  .look-wrap.tall .photo-frame { aspect-ratio: 3 / 4; }
+  .look-wrap.wide .photo-frame { aspect-ratio: 4 / 3; }
+  .look-wrap.compact .photo-frame { aspect-ratio: 1 / 1; }
+  .look-wrap.feature .photo-frame { aspect-ratio: 4 / 5; }
 
   .look-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
-    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s ease;
-  }
-
-  .look::after {
-    content: '';
-    position: absolute;
-    inset: 45% 0 0;
-    background: linear-gradient(transparent, rgba(35, 24, 20, 0.72));
-    pointer-events: none;
+    object-fit: cover;
+    filter: saturate(0.94) contrast(0.99);
+    transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.3s ease;
   }
 
   .look:hover .look-image,
   .look:focus-visible .look-image {
-    transform: scale(1.025);
-    filter: saturate(1.04);
-  }
-
-  .look:focus-visible {
-    outline: 3px solid var(--rose);
-    outline-offset: 3px;
+    transform: scale(1.03);
+    filter: saturate(1) contrast(1);
   }
 
   .look-caption {
-    position: absolute;
-    z-index: 1;
-    left: 1.25rem;
-    right: 3rem;
-    bottom: 1.15rem;
+    display: block;
+    min-height: 42px;
+    padding: 0.7rem 0.22rem 0;
   }
 
   .look-caption strong,
-  .look-caption span {
-    display: block;
-  }
+  .look-caption span { display: block; }
 
   .look-caption strong {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.35rem;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-style: italic;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.05;
   }
 
   .look-caption span {
-    font-size: 0.62rem;
+    margin-top: 0.35rem;
+    color: var(--warm-gray);
+    font-size: 0.56rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-top: 0.3rem;
-    opacity: 0.82;
   }
 
   .expand-icon {
     position: absolute;
-    z-index: 1;
-    right: 1rem;
-    bottom: 1rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    background: rgba(61, 43, 35, 0.82);
+    color: #fff;
     font-family: 'Jost', sans-serif;
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 300;
+    line-height: 1;
   }
 
   .portfolio-cta {
@@ -332,34 +413,34 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
   }
 
   .portfolio-cta p {
+    margin: 0;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(1.4rem, 2.5vw, 2rem);
     font-style: italic;
-    margin: 0;
   }
 
   .cta-link {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    color: var(--deep);
     border-bottom: 1px solid var(--rose);
     padding-bottom: 0.25rem;
+    color: var(--deep);
     font-size: 0.72rem;
     letter-spacing: 0.14em;
-    text-transform: uppercase;
     text-decoration: none;
+    text-transform: uppercase;
     white-space: nowrap;
   }
 
   .lightbox {
     width: min(1120px, calc(100vw - 2rem));
-    height: min(820px, calc(100vh - 2rem));
+    height: min(840px, calc(100vh - 2rem));
     border: 0;
     padding: 0;
-    background: #1f1916;
-    color: #fff;
     overflow: hidden;
+    background: #2b211d;
+    color: #fff;
   }
 
   .lightbox::backdrop {
@@ -375,44 +456,47 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
   }
 
   .lightbox figure {
-    height: 100%;
+    height: calc(100% - 3rem);
     min-width: 0;
     min-height: 0;
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto;
-    margin: 0;
-    padding: 1.5rem 0;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    padding: 0.8rem 0.8rem 1rem;
+    background: #fffdfa;
+    color: var(--deep);
+    box-sizing: border-box;
+    transform: rotate(-0.35deg);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
   }
 
   .lightbox img {
     width: 100%;
     height: 100%;
     min-height: 0;
-    object-fit: contain;
-  }
-
-  .lightbox figcaption {
-    text-align: center;
-    padding: 1rem 1rem 0;
-  }
-
-  .lightbox figcaption strong,
-  .lightbox figcaption span {
     display: block;
+    object-fit: contain;
+    background: #eadfd7;
   }
+
+  .lightbox figcaption { text-align: center; }
+  .lightbox figcaption strong,
+  .lightbox figcaption span { display: block; }
 
   .lightbox figcaption strong {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.35rem;
+    font-size: 1.45rem;
+    font-style: italic;
     font-weight: 400;
   }
 
   .lightbox figcaption span {
-    color: var(--blush);
-    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    color: var(--warm-gray);
+    font-size: 0.6rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-top: 0.25rem;
   }
 
   .lightbox-close,
@@ -428,99 +512,63 @@ const layoutClasses = ['feature', 'tall', 'standard', 'wide', 'standard', 'tall'
     z-index: 2;
     top: 0.65rem;
     right: 0.8rem;
+    padding: 0.5rem;
     font-size: 2rem;
     line-height: 1;
-    padding: 0.5rem;
   }
 
-  .lightbox-nav {
-    align-self: stretch;
-    font-size: 1.4rem;
-  }
+  .lightbox-nav { align-self: stretch; font-size: 1.4rem; }
 
   .lightbox button:focus-visible {
     outline: 2px solid var(--rose);
     outline-offset: -4px;
   }
 
-  :global(body.lightbox-open) {
-    overflow: hidden;
-  }
+  :global(body.lightbox-open) { overflow: hidden; }
 
   @media (max-width: 800px) {
-    .portfolio {
-      padding: 2rem 1.25rem 4rem;
-    }
-
-    .portfolio-intro {
-      padding-bottom: 2.5rem;
-    }
-
-    .back-link {
-      margin-bottom: 2.5rem;
-    }
-
-    .intro-grid {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
+    .portfolio { padding: 2rem 1.25rem 4rem; }
+    .portfolio-intro { padding-bottom: 2.5rem; }
+    .back-link { margin-bottom: 2.5rem; }
+    .intro-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .gallery-note { text-align: left; }
 
     .lookbook {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 16px;
-      gap: 6px;
+      gap: 1.15rem 0.9rem;
+      margin-inline: -1.25rem;
+      padding: 1.75rem 1rem 0.25rem;
     }
 
-    .look,
-    .look.tall {
-      grid-column: span 1;
-      grid-row: span 25;
+    .look { padding: 0.45rem 0.45rem 0.55rem; }
+    .look-caption { min-height: 36px; padding: 0.55rem 0.1rem 0; }
+    .look-caption strong { font-size: 1.05rem; }
+    .look-caption span { font-size: 0.47rem; letter-spacing: 0.1em; }
+    .expand-icon { right: 0.4rem; bottom: 0.4rem; width: 26px; height: 26px; }
+    .portfolio-cta { align-items: flex-start; flex-direction: column; }
+    .lightbox[open] { grid-template-columns: 42px minmax(0, 1fr) 42px; }
+    .lightbox figure {
+      width: fit-content;
+      max-width: 100%;
+      height: auto;
+      max-height: calc(100% - 4rem);
+      grid-template-rows: auto auto;
+      justify-self: center;
+      margin: 2rem 0;
+      padding: 0.55rem 0.55rem 0.8rem;
     }
 
-    .look.compact {
-      grid-column: span 1;
-      grid-row: span 11;
-    }
-
-    .look.feature,
-    .look.wide {
-      grid-column: span 2;
-      grid-row: span 28;
-    }
-
-    .look-caption {
-      left: 0.8rem;
-      right: 1.8rem;
-      bottom: 0.75rem;
-    }
-
-    .look-caption strong {
-      font-size: 1rem;
-    }
-
-    .look-caption span {
-      display: none;
-    }
-
-    .expand-icon {
-      right: 0.6rem;
-      bottom: 0.55rem;
-      font-size: 1.1rem;
-    }
-
-    .portfolio-cta {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
-    .lightbox[open] {
-      grid-template-columns: 44px minmax(0, 1fr) 44px;
+    .lightbox img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: calc(100vh - 10rem);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .look-image {
-      transition: none;
-    }
+    .look-wrap,
+    .look,
+    .look-image { transition: none; }
   }
 </style>

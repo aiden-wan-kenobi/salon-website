@@ -15,9 +15,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.7",
+    "@astrojs/partytown": "^2.1.8",
     "@vercel/analytics": "^2.0.1",
-    "astro": "^7.3.3"
+    "astro": "^7.3.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
